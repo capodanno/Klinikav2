@@ -2,7 +2,7 @@ package org.itech.klinikav2.domain
 
 class Inventory {
 
-	static belongsTo = Clinic
+	static belongsTo = [clinic:Clinic]
 	static hasMany = [items:Item]
 
 	ArrayList<Item> minimumItems = new ArrayList();
