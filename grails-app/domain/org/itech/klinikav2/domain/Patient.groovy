@@ -11,22 +11,24 @@ import org.itech.klinikav2.enums.Gender
 import org.itech.klinikav2.enums.MaritalStatus
 
 class Patient {
+	String firstName
+	String middleName
+	String lastName
+	Date birthDate
+	Gender gender
+	MaritalStatus maritalStatus
+	Date dateOfRegistration
+	String emailAddress
 	String address_city
 	String address_street
 	String address_town
 	String address_province
-	Date birthDate
-	Date dateOfRegistration
-	String emailAddress
-	String firstName
-	Gender gender
-	Boolean isActive
-	Boolean isDeleted
-	String lastName
-	MaritalStatus maritalStatus
-	String middleName
 	String mobileNumber
 	String telNumber
+	Boolean isActive
+	Boolean isDeleted
+
+
 	
 	static hasMany = [logs:Log, vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
