@@ -6,5 +6,6 @@ package org.itech.klinikav2.domain
  */
 class DailyCounter {
 	Date date
-	int patientCounter
+	int patientCount
+	List<Patient> patients = new ArrayList<Patient>()
 }

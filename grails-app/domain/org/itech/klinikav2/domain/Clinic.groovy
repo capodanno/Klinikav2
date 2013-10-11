@@ -1,4 +1,7 @@
 package org.itech.klinikav2.domain
+
+import utils.ReportGenerator;
+
 /**
  * 
  * @author Randy
@@ -15,7 +18,7 @@ class Clinic {
 	String name
 	String telNumber
 	
-	static hasOne = [inventory:Inventory, reportGenerator:ReportGenerator]
+	static hasOne = [inventory:Inventory]
 	
 	
 	public void closeOut()

@@ -1,8 +1,8 @@
-package org.itech.klinikav2.domain
+package utils
+
+import org.itech.klinikav2.domain.Clinic;
 
 class ReportGenerator {
-	
-	static belongsTo = [clinic:Clinic]
 	
 	public static void generateReport(){
 		

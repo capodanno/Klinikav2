@@ -10,6 +10,8 @@ import org.itech.klinikav2.enums.ActivityType
 import org.itech.klinikav2.enums.Gender
 import org.itech.klinikav2.enums.MaritalStatus
 
+import utils.LogCreator;
+
 class Patient {
 	String firstName
 	String middleName
