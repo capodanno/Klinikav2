@@ -1,5 +1,13 @@
-package org.itech.klinikav2.domain
+package utils
 
+import org.itech.klinikav2.domain.AppointmentBalancePaymentLog;
+import org.itech.klinikav2.domain.CheckUpLog;
+import org.itech.klinikav2.domain.CheckUpPaymentLog;
+import org.itech.klinikav2.domain.FollowUpCheckUpLog;
+import org.itech.klinikav2.domain.Log;
+import org.itech.klinikav2.domain.LogInLog;
+import org.itech.klinikav2.domain.LogOutLog;
+import org.itech.klinikav2.domain.PurchaseLog;
 import org.itech.klinikav2.enums.ActivityType
 
 /*
@@ -11,7 +19,7 @@ import org.itech.klinikav2.enums.ActivityType
 
 class LogCreator {
 
-	public Log createLog(ActivityType activityType){		
+	public static Log createLog(ActivityType activityType){		
 		if(activityType== ActivityType.APPOINTMENT_BALANCE_PAYMENT)
 		{
 			return new AppointmentBalancePaymentLog();
@@ -56,7 +64,7 @@ class LogCreator {
 		
 	}
 	
-	public Log requestLog(ActivityType activityType){
+	public static Log requestLog(ActivityType activityType){
 		Log log;
 		log = createLog(activityType);
 		log.constructMessage();
