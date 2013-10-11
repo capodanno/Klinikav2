@@ -1,4 +1,10 @@
-package org.itech.klinika
+package org.itech.klinikav2.domain
+
+/**
+ * 
+ * @author Randy
+ *
+ */
 
 class Admin extends User{
 

@@ -1,4 +1,9 @@
-package org.itech.klinika
+package org.itech.klinikav2.domain
+/**
+ * 
+ * @author Randy
+ *
+ */
 
 class ClinicDetail {
 	String clinicName

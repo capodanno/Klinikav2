@@ -1,6 +1,11 @@
-package org.itech.klinika
+package org.itech.klinikav2.domain
 
-import enums.SecurityQuestion;
+import org.itech.klinikav2.enums.SecurityQuestion;
+/**
+ * @author Randy
+ * 
+ */
+
 
 abstract class User {
 	String username

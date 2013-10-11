@@ -1,6 +1,6 @@
-package org.itech.klinika
+package org.itech.klinikav2.domain
 
-import enums.AppointmentType;
+import org.itech.klinikav2.enums.AppointmentType;
 
 
 class QueueElement {

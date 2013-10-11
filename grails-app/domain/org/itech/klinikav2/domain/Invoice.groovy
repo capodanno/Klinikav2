@@ -1,7 +1,11 @@
-package org.itech.klinika
+package org.itech.klinikav2.domain
 
-import enums.PaymentMethod;
-import enums.PaymentOption;
+import org.itech.klinikav2.enums.*;
+/**
+ * 
+ * @author Randy
+ *
+ */
 
 abstract class Invoice {
 	
@@ -10,8 +14,8 @@ abstract class Invoice {
 	boolean hasBalance
 	String payer
 	Double totalAmount
-	PaymentMethod paymentMethod
 	PaymentOption paymentOption
+	PaymentMethod paymentMethod
 	Doctor doctor
 	Patient patient
 
