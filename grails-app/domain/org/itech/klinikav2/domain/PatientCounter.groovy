@@ -6,6 +6,6 @@ package org.itech.klinikav2.domain
  */
 class PatientCounter {
 	
-	Queue queue
+	
 	static hasMany = [dailyCounters: DailyCounter]
 }
