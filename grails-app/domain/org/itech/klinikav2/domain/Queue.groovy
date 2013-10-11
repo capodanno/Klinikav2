@@ -7,8 +7,8 @@ package org.itech.klinikav2.domain
 
 
 class Queue {
-	Date today
 	
+	Date today
 	static hasMany = [queueElements: QueueElement]
 
 }
