@@ -1,4 +1,3 @@
-
 <%@ page import="org.itech.klinikav2.domain.Patient" %>
 <!DOCTYPE html>
 <html>

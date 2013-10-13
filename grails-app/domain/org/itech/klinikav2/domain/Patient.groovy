@@ -30,8 +30,6 @@ class Patient {
 	Boolean isActive
 	Boolean isDeleted
 
-
-	
 	static hasMany = [logs:Log, vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
 	
@@ -39,8 +37,7 @@ class Patient {
 	{
 		LogCreator logCreator = new LogCreator();
 		Log log = logCreator.requestLog(activityType);
-		logs.add(log);
-		
+		logs.add(log);		
 	}
 	
 
