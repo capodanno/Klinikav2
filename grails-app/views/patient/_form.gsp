@@ -47,7 +47,7 @@
 		<g:message code="patient.dateOfRegistration.label" default="Date Of Registration" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="dateOfRegistration" precision="day"  value="${patientInstance?.dateOfRegistration}"  />
+	<g:hidden name="dateOfRegistration" precision="day"  value="${patientInstance?.dateOfRegistration}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'diagnoses', 'error')} ">

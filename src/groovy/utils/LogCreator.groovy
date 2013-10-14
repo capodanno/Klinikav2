@@ -19,30 +19,36 @@ import org.itech.klinikav2.enums.ActivityType
 
 class LogCreator {
 
-	public static Log createLog(ActivityType activityType){		
+	public static String createLog(ActivityType activityType){		
 		if(activityType== ActivityType.APPOINTMENT_BALANCE_PAYMENT)
 		{
-			return new AppointmentBalancePaymentLog();
+			//return new AppointmentBalancePaymentLog();
+			return "paid appointment balance"
 		}
 		else if(activityType== ActivityType.CHECK_UP)
 		{
-			return new CheckUpLog();
+			//return new CheckUpLog();
+			return "had a check-up"
 		}
 		else if(activityType== ActivityType.PURCHASE)
 		{
-			return new PurchaseLog();
+//			return new PurchaseLog();
+			return "purchased item"
 		}		
 		else if(activityType== ActivityType.APPOINTMENT_BALANCE_PAYMENT)
 		{
-			return new AppointmentBalancePaymentLog();
+			//return new AppointmentBalancePaymentLog();
+			return "paid appointment balance"
 		}
 		else if(activityType== ActivityType.FOLLOWUP_CHECKUP)
 		{
-			return new FollowUpCheckUpLog();
+			//return new FollowUpCheckUpLog();
+			return "had a follow-up check-up"
 		}
 		else if(activityType== ActivityType.CHECKUP_PAYMENT)
 		{
-			return new CheckUpPaymentLog();
+			//return new CheckUpPaymentLog();
+			return "paid check-up charge"
 		}
 //		else if(activityType== ActivityType.FORMS_PRESCRIPTION)
 //		{
@@ -54,21 +60,22 @@ class LogCreator {
 //		}
 		else if(activityType== ActivityType.LOG_IN)
 		{
-			return new LogInLog();
+			//return new LogInLog();
+			return "logged in"
 		}
 		else if(activityType== ActivityType.LOG_OUT)
 		{
-			return new LogOutLog();
+			//return new LogOutLog();
+			return "logged out"
 		}
 		else return null;
 		
 	}
 	
-	public static Log requestLog(ActivityType activityType){
-		Log log;
-		log = createLog(activityType);
-		log.constructMessage();
-		return log;
-		//insert logic here
-	}
+//	public static Log requestLog(ActivityType activityType){
+//		Log log;
+//		log = createLog(activityType);
+//		log.constructMessage();
+//		return log;
+//	}
 }

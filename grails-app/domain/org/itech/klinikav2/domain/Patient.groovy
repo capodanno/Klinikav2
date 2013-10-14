@@ -19,7 +19,7 @@ class Patient {
 	Date birthDate
 	Gender gender
 	MaritalStatus maritalStatus
-	Date dateOfRegistration
+	Date dateOfRegistration = new Date()
 	String emailAddress
 	String address_city
 	String address_street
@@ -29,15 +29,16 @@ class Patient {
 	String telNumber
 	Boolean isActive
 	Boolean isDeleted
-
-	static hasMany = [logs:Log, vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
+	List<String> logs = new ArrayList<String>();
+	
+	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
 	
-	public void logActivity(ActivityType activityType)
+	public void logActivity(String activityType)
 	{
-		LogCreator logCreator = new LogCreator();
-		Log log = logCreator.requestLog(activityType);
-		logs.add(log);		
+		def logMsg= LogCreator.createLog(activityType);
+		logMsg = "${new Date()} : ${logMsg}"
+		logs.add(logMsg);		
 	}
 	
 
