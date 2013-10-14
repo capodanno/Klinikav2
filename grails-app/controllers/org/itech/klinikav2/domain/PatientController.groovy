@@ -11,7 +11,7 @@ class PatientController {
         redirect(action: "list", params: params)
     }
 
-	def addLog(String activityType, Long id)
+	public void addLog(ActivityType activityType, Long id)
 	{
 		def patientInstance = Patient.get(id)
 		patientInstance.logActivity(activityType)

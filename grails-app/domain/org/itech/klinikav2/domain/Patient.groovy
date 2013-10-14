@@ -34,7 +34,7 @@ class Patient {
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
 	
-	public void logActivity(String activityType)
+	public void logActivity(ActivityType activityType)
 	{
 		def logMsg= LogCreator.createLog(activityType);
 		logMsg = "${new Date()} : ${logMsg}"
