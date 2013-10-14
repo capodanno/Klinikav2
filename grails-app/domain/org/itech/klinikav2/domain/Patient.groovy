@@ -41,7 +41,6 @@ class Patient {
 		String logMsg= LogCreator.createLog(ActivityType.valueOf(activityType));
 		String logSentence = "${new Date()} : ${logMsg}"
 		logs.add(logSentence)		
-	}
-	
+	}	
 
 }

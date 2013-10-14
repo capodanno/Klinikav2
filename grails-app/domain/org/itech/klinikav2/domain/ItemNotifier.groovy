@@ -4,24 +4,26 @@ import java.util.Date;
 
 class ItemNotifier {
 
-	static scope = "singleton"
-	Item item
-	Date itemExpiry
-	int itemCurrentQuantity
-	
 	int expirationReminderDays = 30
-	Date minStocksNotifDate
 	
-	static belongsTo = Item
-	private static final instance = new ItemNotifier()
+	Item item
+	private static ItemNotifier instance;
 	
-	static getInstance()
-	{
-		return instance
-	}
 	private ItemNotifier()
-	{}
+	{
+		
+	}
 	
+	public static ItemNotifier getInstance()
+	{
+		
+		if (instance == null)
+		{
+			instance = new ItemNotifier();
+		}		
+		return instance;
+	}
+		
 	static mapping = {
 	}
 	

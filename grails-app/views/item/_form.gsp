@@ -66,14 +66,6 @@
 	<g:textField name="name" value="${itemInstance?.name}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'notifier', 'error')} required">
-	<label for="notifier">
-		<g:message code="item.notifier.label" default="Notifier" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="notifier" name="notifier.id" from="${org.itech.klinikav2.domain.ItemNotifier.list()}" optionKey="id" required="" value="${itemInstance?.notifier?.id}" class="many-to-one"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: itemInstance, field: 'retailPrice', 'error')} required">
 	<label for="retailPrice">
 		<g:message code="item.retailPrice.label" default="Retail Price" />

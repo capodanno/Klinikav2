@@ -1,5 +1,7 @@
 package org.itech.klinikav2.domain
 
+import java.util.Date;
+
 import org.itech.klinikav2.enums.ItemType;
 
 class Item {
@@ -12,11 +14,11 @@ class Item {
 	int minStockLevel
 	String name
 	Double retailPrice
-	
+	ItemNotifier notifier = ItemNotifier.getInstance()
 	Boolean hasReachedMinimum
-		
-	static hasOne = [notifier:ItemNotifier]
+	
 
+			
 	public void setCurrentQuantity(int newQuantity)
 	{
 		currentQuantity = newQuantity;
