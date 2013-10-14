@@ -29,16 +29,18 @@ class Patient {
 	String telNumber
 	Boolean isActive
 	Boolean isDeleted
-	List<String> logs = new ArrayList<String>();
-	
+	def logs= []
+//	assert emptyList.size() == 0
+//	emptyList.add(5)
+		
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
-	
-	public void logActivity(ActivityType activityType)
+		
+	public void logActivity(def activityType)
 	{
-		def logMsg= LogCreator.createLog(activityType);
-		logMsg = "${new Date()} : ${logMsg}"
-		logs.add(logMsg);		
+		String logMsg= LogCreator.createLog(ActivityType.valueOf(activityType));
+		String logSentence = "${new Date()} : ${logMsg}"
+		logs.add(logSentence)		
 	}
 	
 

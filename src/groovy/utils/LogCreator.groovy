@@ -19,13 +19,13 @@ import org.itech.klinikav2.enums.ActivityType
 
 class LogCreator {
 
-	public static String createLog(ActivityType activityType){		
-		if(activityType== ActivityType.APPOINTMENT_BALANCE_PAYMENT)
+	public static String createLog(def activityType){		
+		if(activityType.equals(ActivityType.APPOINTMENT_BALANCE_PAYMENT))
 		{
 			//return new AppointmentBalancePaymentLog();
 			return "paid appointment balance"
 		}
-		else if(activityType== ActivityType.CHECK_UP)
+		else if(activityType.equals(ActivityType.CHECK_UP))
 		{
 			//return new CheckUpLog();
 			return "had a check-up"

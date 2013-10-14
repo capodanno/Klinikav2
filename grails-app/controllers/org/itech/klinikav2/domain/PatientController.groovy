@@ -1,6 +1,5 @@
 package org.itech.klinikav2.domain
 
-import org.itech.klinikav2.enums.ActivityType
 import org.springframework.dao.DataIntegrityViolationException
 
 class PatientController {
@@ -11,10 +10,11 @@ class PatientController {
         redirect(action: "list", params: params)
     }
 
-	public void addLog(ActivityType activityType, Long id)
+	public def addLog(Long id)
 	{
 		def patientInstance = Patient.get(id)
-		patientInstance.logActivity(activityType)
+		patientInstance.logActivity(params.activityType)
+		redirect(action: "show", id: patientInstance.id)
 	}
 	
     def list(Integer max) {
