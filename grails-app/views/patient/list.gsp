@@ -2,38 +2,53 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="kickstart">
 		<g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-patient" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-patient" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+		<div class="content">
+	      <div class="container">
+	       <div class="page-header">
+	          <h1>Lists <small>Patient</small></h1>
+	        </div>
+			<div class="LeftMargin row">
+				<div class="span3">
+	            <a href="${createLink(uri: '/patient/create')}" class="btn btn-success btn-mini">
+				<h5><span class="cus-user_add"></span> Add Patient</h5>
+	            </a>
+				</div>
+				
+				<div class="span6"></div>
+				<div class="span3">
+					<form class="form-search">
+					  <div class="input-append">
+						<input type="text" class="span2 search-query">
+						<button type="submit" class="btn"><span class="cus-magnifier" ></span> Search</button>
+					  </div>
+					</form>
+				</div>           
+			</div>
+			
+		<div id="list-patient" class="content scaffold-list topSlider" role="main">
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="status"><span class="label label-warning">${flash.message}</span></div>
 			</g:if>
-			<table>
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="address_city" title="${message(code: 'patient.address_city.label', default: 'Addresscity')}" />
+						<g:sortableColumn property="firstName" title="${message(code: 'patient.firstName.label', default: 'First Name')}" />
 					
-						<g:sortableColumn property="address_province" title="${message(code: 'patient.address_province.label', default: 'Addressprovince')}" />
+						<g:sortableColumn property="lastName" title="${message(code: 'patient.lastName.label', default: 'Last Name')}" />
 					
-						<g:sortableColumn property="address_street" title="${message(code: 'patient.address_street.label', default: 'Addressstreet')}" />
+						<th>Marital Status</th>
 					
-						<g:sortableColumn property="address_town" title="${message(code: 'patient.address_town.label', default: 'Addresstown')}" />
+						<g:sortableColumn property="dateOfRegistration" title="${message(code: 'patient.dateOfRegistration.label', default: 'Date of Registration')}" />
 					
-						<g:sortableColumn property="birthDate" title="${message(code: 'patient.birthDate.label', default: 'Birth Date')}" />
+						<th>Active</th>
 					
-						<g:sortableColumn property="dateOfRegistration" title="${message(code: 'patient.dateOfRegistration.label', default: 'Date Of Registration')}" />
+						<th>Options</th>
 					
 					</tr>
 				</thead>
@@ -41,18 +56,18 @@
 				<g:each in="${patientInstanceList}" status="i" var="patientInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${patientInstance.id}">${fieldValue(bean: patientInstance, field: "address_city")}</g:link></td>
+						<td>${fieldValue(bean: patientInstance, field: "firstName")}</td>
 					
-						<td>${fieldValue(bean: patientInstance, field: "address_province")}</td>
+						<td>${fieldValue(bean: patientInstance, field: "lastName")}</td>
 					
-						<td>${fieldValue(bean: patientInstance, field: "address_street")}</td>
+						<td>${fieldValue(bean: patientInstance, field: "maritalStatus")}</td>
 					
-						<td>${fieldValue(bean: patientInstance, field: "address_town")}</td>
+						<td>${fieldValue(bean: patientInstance, field: "dateOfRegistration")}</td>
 					
-						<td><g:formatDate date="${patientInstance.birthDate}" /></td>
-					
-						<td><g:formatDate date="${patientInstance.dateOfRegistration}" /></td>
-					
+						<td>${fieldValue(bean: patientInstance, field: "isActive")}</td>
+						
+						<td><g:link action="show" id="${patientInstance.id}">View</g:link> | <g:link class="edit" action="edit" id="${patientInstance?.id}">Edit</g:link> | <g:link class="delete" action="delete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"> Delete</g:link></td>
+						
 					</tr>
 				</g:each>
 				</tbody>
@@ -60,6 +75,8 @@
 			<div class="pagination">
 				<g:paginate total="${patientInstanceTotal}" />
 			</div>
+		</div>
+		</div>
 		</div>
 	</body>
 </html>

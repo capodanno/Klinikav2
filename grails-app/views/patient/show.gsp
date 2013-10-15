@@ -2,195 +2,113 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="kickstart">
 		<g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-patient" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-patient" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+		<div class="content">
+	      <div class="container">
+	       <div class="page-header">
+	          <h1>View <small>Patient</small></h1>       
+	        </div>
+	        
+	        
+	        <div class="LeftMargin row">
+				<div class="span3">
+				<div class="btn-group">
+	            <a href="${createLink(uri: '/patient/create')}" class="btn btn-success btn-mini">
+				<h5><span class="cus-user_add"></span> Add Patient</h5>
+	            </a>
+	            <a href="${createLink(uri: '/patient/list')}" class="btn btn-primary btn-mini">
+				<h5><span class="cus-application_view_list"></span> Patient List</h5>
+	            </a>
+				</div>
+			</div>
+			
+		<div id="show-patient" class="content scaffold-show topSlider alignCenter" role="main">
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="status"><span class="label label-warning">${flash.message}</span></div>
 			</g:if>
-			<ol class="property-list patient">
 			
-				<g:if test="${patientInstance?.address_city}">
-				<li class="fieldcontain">
-					<span id="address_city-label" class="property-label"><g:message code="patient.address_city.label" default="Addresscity" /></span>
-					
-						<span class="property-value" aria-labelledby="address_city-label"><g:fieldValue bean="${patientInstance}" field="address_city"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.address_province}">
-				<li class="fieldcontain">
-					<span id="address_province-label" class="property-label"><g:message code="patient.address_province.label" default="Addressprovince" /></span>
-					
-						<span class="property-value" aria-labelledby="address_province-label"><g:fieldValue bean="${patientInstance}" field="address_province"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.address_street}">
-				<li class="fieldcontain">
-					<span id="address_street-label" class="property-label"><g:message code="patient.address_street.label" default="Addressstreet" /></span>
-					
-						<span class="property-value" aria-labelledby="address_street-label"><g:fieldValue bean="${patientInstance}" field="address_street"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.address_town}">
-				<li class="fieldcontain">
-					<span id="address_town-label" class="property-label"><g:message code="patient.address_town.label" default="Addresstown" /></span>
-					
-						<span class="property-value" aria-labelledby="address_town-label"><g:fieldValue bean="${patientInstance}" field="address_town"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.birthDate}">
-				<li class="fieldcontain">
-					<span id="birthDate-label" class="property-label"><g:message code="patient.birthDate.label" default="Birth Date" /></span>
-					
-						<span class="property-value" aria-labelledby="birthDate-label"><g:formatDate date="${patientInstance?.birthDate}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.dateOfRegistration}">
-				<li class="fieldcontain">
-					<span id="dateOfRegistration-label" class="property-label"><g:message code="patient.dateOfRegistration.label" default="Date Of Registration" /></span>
-					
-						<span class="property-value" aria-labelledby="dateOfRegistration-label"><g:formatDate date="${patientInstance?.dateOfRegistration}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.diagnoses}">
-				<li class="fieldcontain">
-					<span id="diagnoses-label" class="property-label"><g:message code="patient.diagnoses.label" default="Diagnoses" /></span>
-					
-						<g:each in="${patientInstance.diagnoses}" var="d">
-						<span class="property-value" aria-labelledby="diagnoses-label"><g:link controller="diagnosis" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.emailAddress}">
-				<li class="fieldcontain">
-					<span id="emailAddress-label" class="property-label"><g:message code="patient.emailAddress.label" default="Email Address" /></span>
-					
-						<span class="property-value" aria-labelledby="emailAddress-label"><g:fieldValue bean="${patientInstance}" field="emailAddress"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.firstName}">
-				<li class="fieldcontain">
-					<span id="firstName-label" class="property-label"><g:message code="patient.firstName.label" default="First Name" /></span>
-					
-						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${patientInstance}" field="firstName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.gender}">
-				<li class="fieldcontain">
-					<span id="gender-label" class="property-label"><g:message code="patient.gender.label" default="Gender" /></span>
-					
-						<span class="property-value" aria-labelledby="gender-label"><g:fieldValue bean="${patientInstance}" field="gender"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.isActive}">
-				<li class="fieldcontain">
-					<span id="isActive-label" class="property-label"><g:message code="patient.isActive.label" default="Is Active" /></span>
-					
-						<span class="property-value" aria-labelledby="isActive-label"><g:formatBoolean boolean="${patientInstance?.isActive}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.isDeleted}">
-				<li class="fieldcontain">
-					<span id="isDeleted-label" class="property-label"><g:message code="patient.isDeleted.label" default="Is Deleted" /></span>
-					
-						<span class="property-value" aria-labelledby="isDeleted-label"><g:formatBoolean boolean="${patientInstance?.isDeleted}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.laboratoryResults}">
-				<li class="fieldcontain">
-					<span id="laboratoryResults-label" class="property-label"><g:message code="patient.laboratoryResults.label" default="Laboratory Results" /></span>
-					
-						<g:each in="${patientInstance.laboratoryResults}" var="l">
-						<span class="property-value" aria-labelledby="laboratoryResults-label"><g:link controller="laboratoryResult" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.lastName}">
-				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="patient.lastName.label" default="Last Name" /></span>
-					
-						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${patientInstance}" field="lastName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.logs}">
-				<li class="fieldcontain">
-					<span id="logs-label" class="property-label"><g:message code="patient.logs.label" default="Logs" /></span>
-					
-						<g:each in="${patientInstance.logs}" var="l">
-						<span class="property-value" aria-labelledby="logs-label"><g:link controller="log" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.maritalStatus}">
-				<li class="fieldcontain">
-					<span id="maritalStatus-label" class="property-label"><g:message code="patient.maritalStatus.label" default="Marital Status" /></span>
-					
-						<span class="property-value" aria-labelledby="maritalStatus-label"><g:fieldValue bean="${patientInstance}" field="maritalStatus"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.medicalHistories}">
-				<li class="fieldcontain">
-					<span id="medicalHistories-label" class="property-label"><g:message code="patient.medicalHistories.label" default="Medical Histories" /></span>
-					
-						<g:each in="${patientInstance.medicalHistories}" var="m">
-						<span class="property-value" aria-labelledby="medicalHistories-label"><g:link controller="medicalHistory" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${patientInstance?.middleName}">
-				<li class="fieldcontain">
-					<span id="middleName-label" class="property-label"><g:message code="patient.middleName.label" default="Middle Name" /></span>
-					
-						<span class="property-value" aria-labelledby="middleName-label"><g:fieldValue bean="${patientInstance}" field="middleName"/></span>
-					
-				</li>
-				</g:if>
+				  <dl class="dl-horizontal topSlider">
+					  <dt>First Name</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="firstName"/></dd>
+					  <dt>Middle Name</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="middleName"/></dd>
+					  <dt>Last Name</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="lastName"/></dd>
+					  <dt>Gender</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="gender"/></dd>
+					  <dt>Marital Status</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="maritalStatus"/></dd>
+					  <dt>Marital Status</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="mobileNurebm"/></dd>		
+					  <dt>Street</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="address_street"/></dd>
+					  <dt>Address City</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="address_city"/></dd>
+					  <dt>Town</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="address_town"/></dd>
+					  <dt>Province</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="address_province"/></dd>
+					  <dt>Birthdate</dt>
+					  <dd><g:formatDate bean="${patientInstance}" field="birthDate"/></dd>
+					  <dt>Date of Registration</dt>
+					  <dd><g:formatDate bean="${patientInstance}" field="dateOfRegistration"/></dd>
+					  <dt>Email Address</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="emailAddress"/></dd>
+					  <dt>Street</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="address_street"/></dd>
+					  <dt>Active</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="isActive"/></dd>	
+					  <dt>Deleted</dt>
+					  <dd><g:fieldValue bean="${patientInstance}" field="isDeleted"/></dd>
+					  		  
+				  </dl>
+				  			
+<%--				<g:if test="${patientInstance?.diagnoses}">--%>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="diagnoses-label" class="property-label"><g:message code="patient.diagnoses.label" default="Diagnoses" /></span>--%>
+<%--					--%>
+<%--						<g:each in="${patientInstance.diagnoses}" var="d">--%>
+<%--						<span class="property-value" aria-labelledby="diagnoses-label"><g:link controller="diagnosis" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>--%>
+<%--						</g:each>--%>
+<%--					--%>
+<%--				</li>--%>
+<%--				</g:if>--%>
+<%--			--%>
+<%--				<g:if test="${patientInstance?.laboratoryResults}">--%>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="laboratoryResults-label" class="property-label"><g:message code="patient.laboratoryResults.label" default="Laboratory Results" /></span>--%>
+<%--					--%>
+<%--						<g:each in="${patientInstance.laboratoryResults}" var="l">--%>
+<%--						<span class="property-value" aria-labelledby="laboratoryResults-label"><g:link controller="laboratoryResult" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>--%>
+<%--						</g:each>--%>
+<%--					--%>
+<%--				</li>--%>
+<%--						--%>
+<%--				<g:if test="${patientInstance?.logs}">--%>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="logs-label" class="property-label"><g:message code="patient.logs.label" default="Logs" /></span>--%>
+<%--					--%>
+<%--						<g:each in="${patientInstance.logs}" var="l">--%>
+<%--						<span class="property-value" aria-labelledby="logs-label"><g:link controller="log" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>--%>
+<%--						</g:each>--%>
+<%--					--%>
+<%--				</li>--%>
+<%--				</g:if>--%>
+<%--			--%>
+<%--				<g:if test="${patientInstance?.medicalHistories}">--%>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="medicalHistories-label" class="property-label"><g:message code="patient.medicalHistories.label" default="Medical Histories" /></span>--%>
+<%--					--%>
+<%--						<g:each in="${patientInstance.medicalHistories}" var="m">--%>
+<%--						<span class="property-value" aria-labelledby="medicalHistories-label"><g:link controller="medicalHistory" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>--%>
+<%--						</g:each>--%>
+<%--					--%>
+<%--				</li>--%>
+<%--				</g:if>--%>
 			
 				<g:if test="${patientInstance?.mobileNumber}">
 				<li class="fieldcontain">
@@ -243,7 +161,6 @@
 				</li>
 				</g:if>
 			
-			</ol>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${patientInstance?.id}" />
@@ -251,6 +168,9 @@
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+		</div>
+		</div>
+		</div>
 		</div>
 	</body>
 </html>
