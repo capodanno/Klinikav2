@@ -2,7 +2,9 @@ package org.itech.klinikav2.domain
 
 
 
+import org.itech.klinikav2.controller.ItemController;
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(ItemController)

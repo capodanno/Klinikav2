@@ -1,6 +1,8 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2.controller
 
+import org.itech.klinikav2.domain.Patient;
 import org.springframework.dao.DataIntegrityViolationException
+
 import utils.SMSNotifier
 
 class PatientController {

@@ -1,4 +1,4 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2.controller
 
 class AppointmentBalancePaymentLogController {
 

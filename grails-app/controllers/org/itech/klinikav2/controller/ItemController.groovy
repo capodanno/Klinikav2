@@ -1,5 +1,6 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2.controller
 
+import org.itech.klinikav2.domain.Item;
 import org.springframework.dao.DataIntegrityViolationException
 
 class ItemController {
