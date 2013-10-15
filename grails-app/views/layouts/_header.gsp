@@ -11,7 +11,10 @@
             </button>
             <!-- Start: Primary navigation -->
             <div class="nav-collapse collapse">
-            	<g:render template="/_menu/signIn"/>
+<%--            for All Users--%>
+<%--            <g:render template="/_menu/signIn"/>--%>
+<%--				for Normal Users--%>
+            	<g:render template="/_menu/normalUser"/>
             </div>
           </div>
         </div>
