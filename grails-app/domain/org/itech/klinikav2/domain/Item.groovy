@@ -17,8 +17,6 @@ class Item {
 	ItemNotifier notifier = ItemNotifier.getInstance()
 	Boolean hasReachedMinimum
 	
-
-			
 	public void setCurrentQuantity(int newQuantity)
 	{
 		currentQuantity = newQuantity;

@@ -62,6 +62,6 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
 		
-		'commons-net:commons-net:2.2'
+		'commons-net:commons-net:3.0.1'
     }
 }
