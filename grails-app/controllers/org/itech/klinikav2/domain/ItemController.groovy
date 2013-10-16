@@ -10,10 +10,19 @@ class ItemController {
         redirect(action: "list", params: params)
     }
 
+	//This will list the Items and its Details
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
     }
+	
+	//This will list the Items with Low Stock Level
+	def listItemsWithMinimumStockLevel(Integer max){
+		params.max = Math.min(max ?: 10, 100)
+		[itemInstanceList: Item.where {hasReachedMinimum == true}, itemInstanceTotal: Item.count()]
+		
+		
+	}
 
     def create() {
         [itemInstance: new Item(params)]

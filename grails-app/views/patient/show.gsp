@@ -43,7 +43,7 @@
 					  <dt>Marital Status</dt>
 					  <dd><g:fieldValue bean="${patientInstance}" field="maritalStatus"/></dd>
 					  <dt>Marital Status</dt>
-					  <dd><g:fieldValue bean="${patientInstance}" field="mobileNurebm"/></dd>		
+					  <dd><g:fieldValue bean="${patientInstance}" field="mobileNumber"/></dd>		
 					  <dt>Street</dt>
 					  <dd><g:fieldValue bean="${patientInstance}" field="address_street"/></dd>
 					  <dt>Address City</dt>

@@ -7,5 +7,5 @@ package org.itech.klinikav2.domain
 
 
 class PatientQueue {
-	
+	Date dateToday
 }
