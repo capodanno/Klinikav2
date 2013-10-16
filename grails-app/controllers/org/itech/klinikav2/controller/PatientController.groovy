@@ -1,5 +1,6 @@
 package org.itech.klinikav2.controller
 
+import org.itech.klinikav2.domain.ItemNotifier;
 import org.itech.klinikav2.domain.Patient;
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -10,9 +11,10 @@ class PatientController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index() {
-		def sms = new SMSNotifier()
-		def result= sms.sendClickatellSms("09277705918", "Hi!")
-		render result
+		//test of web API
+//		def sms = new SMSNotifier()
+//		def result= sms.sendClickatellSms("09277705918", "Hi!")
+//		render result
 	}
 	public def addLog(Long id) {
 		def patientInstance = Patient.get(id)
@@ -37,7 +39,24 @@ class PatientController {
 	}
 
 	def save() {
-		def patientInstance = new Patient(params)
+		def patientInstance = new Patient()
+		patientInstance.dateOfRegistration = new Date()
+		patientInstance.firstName = params.firstName
+		patientInstance.middleName = params.middleName;
+		patientInstance.lastName = params.lastName;
+		patientInstance.birthDate = params.birthDate;
+		patientInstance.gender = params.gender;
+		patientInstance.maritalStatus = params.maritalStatus;
+		patientInstance.emailAddress = params.emailAddress;
+		patientInstance.address_city = params.address_city;
+		patientInstance.address_street = params.address_street;
+		patientInstance.address_town = params.address_town;
+		patientInstance.address_province = params.address_province;
+		patientInstance.mobileNumber = params.mobileNumber;
+		patientInstance.telNumber = params.telNumber;
+		patientInstance.isActive = params.isActive;
+		patientInstance.isDeleted = params.isDeleted;
+		patientInstance.save()
 		if (!patientInstance.save(flush: true)) {
 			render(view: "create", model: [patientInstance: patientInstance])
 			return

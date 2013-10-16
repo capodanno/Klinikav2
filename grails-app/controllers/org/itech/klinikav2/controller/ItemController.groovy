@@ -1,6 +1,7 @@
 package org.itech.klinikav2.controller
 
 import org.itech.klinikav2.domain.Item;
+import org.itech.klinikav2.domain.ItemNotifier;
 import org.springframework.dao.DataIntegrityViolationException
 
 class ItemController {
@@ -21,10 +22,18 @@ class ItemController {
     }
 
     def save() {
-        def itemInstance = new Item(params)
+        def itemInstance = new Item()
+		itemInstance.currentQuantity = params.currentQuantity.toInteger();
+		itemInstance.description = params.description;
+		itemInstance.expiryDate = params.expiryDate;
+		itemInstance.itemType = params.itemType;
+		itemInstance.minStockLevel = params.minStockLevel.toInteger();
+		itemInstance.name = params.name;
+		itemInstance.retailPrice = params.retailPrice.toDouble();
+		itemInstance.hasReachedMinimum = false
         if (!itemInstance.save(flush: true)) {
             render(view: "create", model: [itemInstance: itemInstance])
-            return
+			return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])
@@ -38,7 +47,6 @@ class ItemController {
             redirect(action: "list")
             return
         }
-
         [itemInstance: itemInstance]
     }
 
