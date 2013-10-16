@@ -91,3 +91,6 @@ log4j = {
 }
 
 grails.config.defaults.locations = [KickstartResources]
+//smsGateway properties
+org.klinikav2.sms.modemPort="/dev/COM7"
+utils.expirationReminderDays=30

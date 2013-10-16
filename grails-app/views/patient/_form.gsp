@@ -42,13 +42,13 @@
 	<g:datePicker name="birthDate" precision="day"  value="${patientInstance?.birthDate}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'dateOfRegistration', 'error')} required">
+<%--<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'dateOfRegistration', 'error')} required">
 	<label for="dateOfRegistration">
 		<g:message code="patient.dateOfRegistration.label" default="Date Of Registration" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="dateOfRegistration" precision="day"  value="${patientInstance?.dateOfRegistration}"  />
-</div>
+</div> --%>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'diagnoses', 'error')} ">
 	<label for="diagnoses">
@@ -112,14 +112,6 @@
 		
 	</label>
 	<g:textField name="lastName" value="${patientInstance?.lastName}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'logs', 'error')} ">
-	<label for="logs">
-		<g:message code="patient.logs.label" default="Logs" />
-		
-	</label>
-	<g:select name="logs" from="${org.itech.klinikav2.domain.Log.list()}" multiple="multiple" optionKey="id" size="5" value="${patientInstance?.logs*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'maritalStatus', 'error')} required">
