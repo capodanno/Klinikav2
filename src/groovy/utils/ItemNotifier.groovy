@@ -1,31 +1,26 @@
-package org.itech.klinikav2.domain
+package utils
 
 import java.util.Date;
 
+import org.itech.klinikav2.domain.Item;
+
 class ItemNotifier {
 
-	Item item
 //	ExpirationReminder reminder = ExpirationReminder.getInstance();
 	int expirationReminderDays
 	
-	static mapping = {
-	}
-
-	static constraints = {
-	}
-
-	public void update() {		
+	public static void update(Item item) {		
 			def itemCurrentQuantity = item.currentQuantity
 			if( itemCurrentQuantity <= item.minimumStockLevel)
 			{
 				if(item.hasReachedMinimum == true)
 				{			
-					notifyMinStocks();		
+					notifyMinStocks(item);		
 				}
 				else
 				{
 					item.hasReachedMinimum = true
-					notifyMinStocks();
+					notifyMinStocks(item);
 				}
 			}					
 	}
@@ -43,7 +38,7 @@ class ItemNotifier {
 		}
 	}
 
-	public void notifyMinStocks(){
+	public void notifyMinStocks(Item item){
 		//codes here to tell the user that the item has min stocks
 	}
 

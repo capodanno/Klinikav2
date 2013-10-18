@@ -1,7 +1,5 @@
 <%@ page import="org.itech.klinikav2.domain.Patient" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'address_city', 'error')} ">
 	<label for="address_city">
 		<g:message code="patient.address_city.label" default="Addresscity" />
