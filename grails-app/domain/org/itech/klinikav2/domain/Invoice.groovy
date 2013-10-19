@@ -19,6 +19,8 @@ abstract class Invoice {
 	Doctor doctor
 	Patient patient
 
+	static belongsTo = [patient:Patient]
+	
     static constraints = {
     }
 }

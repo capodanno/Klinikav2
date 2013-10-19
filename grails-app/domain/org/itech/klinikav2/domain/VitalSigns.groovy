@@ -15,4 +15,5 @@ class VitalSigns {
 	String pulseRate
 	Double weight //in kg
 	
+	static belongsTo = [patient:Patient]
 }

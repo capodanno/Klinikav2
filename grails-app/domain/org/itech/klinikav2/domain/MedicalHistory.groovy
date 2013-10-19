@@ -10,4 +10,5 @@ class MedicalHistory {
 	String pastIllness
 	String pastMedications
 
+	static belongsTo = [patient:Patient]
 }

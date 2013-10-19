@@ -59,7 +59,17 @@ class Patient {
 	
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult, invoices:Invoice]
-		
+	
+	static mapping ={
+		vitalSigns cascade: "all-delete-orphan"
+		diagnoses cascade: "all-delete-orphan"
+		prescriptions cascade: "all-delete-orphan"
+		medicalHistories cascade: "all-delete-orphan"
+		referrals cascade: "all-delete-orphan"
+		laboratoryResults cascade: "all-delete-orphan"
+		invoices cascade: "all-delete-orphan"		
+	}
+	
 	public void logActivity(def activityType)
 	{
 		String logMsg= LogCreator.createLog(ActivityType.valueOf(activityType));
@@ -97,4 +107,5 @@ class Patient {
 		Invoice purhaseInvoice = new ItemInvoice()
 	}
 	
+		
 }

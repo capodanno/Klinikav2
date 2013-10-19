@@ -10,4 +10,5 @@ class LaboratoryResult {
 	Date date
 	String details
 
+	static belongsTo = [patient:Patient]
 }

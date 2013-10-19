@@ -21,9 +21,9 @@ class Clinic {
 	String twitterUrl
 	String email
 
+	PatientQueue queueToday
 	Date dateToday
-	List<Profile> profiles = new ArrayList<Profile>()
-	List<PatientQueue> queues= new ArrayList<PatientQueue>()
+	static hasMany = [profiles:Profile,patientQueues:PatientQueue]
 
 	Inventory inventory = Inventory.getInstance()
 	Revenue revenue = Revenue.getInstance()
@@ -55,7 +55,8 @@ class Clinic {
 	def initialize()
 	{
 		dateToday = new Date()
-		queues.add(new PatientQueue (dateToday))		
+		addToPatientQueues.(new PatientQueue (dateToday))
+		queueToday = PatientQueue.findByDate(dateToday)
 		inventory.update(dateToday);
 		
 	}

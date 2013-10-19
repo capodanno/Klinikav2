@@ -9,5 +9,5 @@ package org.itech.klinikav2.domain
 class PatientQueue {
 	Date date
 	
-	static hasMany = QueueElement
+	static hasMany = [queueElements:QueueElement]
 }

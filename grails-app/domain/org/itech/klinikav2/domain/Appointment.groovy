@@ -7,6 +7,7 @@ package org.itech.klinikav2.domain
  */
 
 abstract class Appointment {
+	
 	Date date
 	boolean isAffirmed
 	
