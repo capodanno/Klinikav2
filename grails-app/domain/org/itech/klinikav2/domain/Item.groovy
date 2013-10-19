@@ -2,11 +2,8 @@ package org.itech.klinikav2.domain
 
 import java.util.Date;
 
-
-
+import org.codehaus.groovy.grails.commons.GrailsApplication;
 import org.itech.klinikav2.enums.ItemType;
-
-import utils.ItemNotifier;
 
 class Item {
 
@@ -18,36 +15,32 @@ class Item {
 	int minStockLevel
 	String name
 	Double retailPrice
+
 	Boolean hasReachedMinimum
 	Boolean newInstance
-	
+		
 	static constraints = {
-		currentQuantity blank:false, min:1, validator:{ val, obj->
-			val > obj.minStockLevel
-		}
+		currentQuantity blank:false, min:1
 		expiryDate validator:{ val, obj ->
-			if (val <= new Date()) {
-				return "soonToExpire"
-			}
 			if (obj.itemType == ItemType.EQUIPMENT) {
 				val blank:true
-			}// rendered as domainClassName.startDate.message2 from messages.properties
-			if(val != obj.d+30){
-				true
+			}
+			if(val < new Date()){
+				return 'item.expiryDate'
 			}
 		}
-		
-		retailPrice blank: true
+
+		retailPrice blank: false 
 		description blank:true, nullable:true
-		
-		minStockLevel nullable: true
+
+		minStockLevel min:0
 		name blank:false
 		retailPrice nullable:true, blank:true
+
 	}
 
-	public Item(int currentQuantity, String description, Date expiryDate,
-	Boolean isActive, ItemType itemType, int minStockLevel,
-	String name, def retailPrice) {
+	public Item(int currentQuantity, String description, Date expiryDate, ItemType itemType, int minStockLevel,
+	String name, Double retailPrice) {
 		super();
 		this.currentQuantity = currentQuantity;
 		this.description = description;
@@ -64,12 +57,13 @@ class Item {
 	public void setCurrentQuantity(int newQuantity) {
 		if(newInstance == true){
 			currentQuantity = newQuantity;
-			ItemNotifier.update(this);
+			notifier.update();
 		}
 		else{
 			currentQuantity = newQuantity;
 			newInstance=false
 		}
+
 	}
 
 	public Boolean checkExpiry(Date dateToday) {

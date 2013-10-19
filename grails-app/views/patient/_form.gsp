@@ -1,5 +1,7 @@
 <%@ page import="org.itech.klinikav2.domain.Patient" %>
 
+
+
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'address_city', 'error')} ">
 	<label for="address_city">
 		<g:message code="patient.address_city.label" default="Addresscity" />
@@ -80,7 +82,8 @@
 	<g:select name="gender" from="${org.itech.klinikav2.enums.Gender?.values()}" keys="${org.itech.klinikav2.enums.Gender.values()*.name()}" required="" value="${patientInstance?.gender?.name()}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'isActive', 'error')} ">
+<%--commented this out since autoassigned ni sya to be true and false, respectively --%>
+<%--<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'isActive', 'error')} ">
 	<label for="isActive">
 		<g:message code="patient.isActive.label" default="Is Active" />
 		
@@ -94,7 +97,7 @@
 		
 	</label>
 	<g:checkBox name="isDeleted" value="${patientInstance?.isDeleted}" />
-</div>
+</div>--%>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'laboratoryResults', 'error')} ">
 	<label for="laboratoryResults">

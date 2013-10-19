@@ -6,11 +6,14 @@ import org.springframework.dao.DataIntegrityViolationException
 import utils.ItemNotifier;
 
 class ItemController {
+	def grailsApplication
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
-        redirect(action: "list", params: params)
+//        redirect(action: "list", params: params)
+		
+		ItemNotifier.notifyMinStocks()
     }
 
     def list(Integer max) {
@@ -21,16 +24,17 @@ class ItemController {
     def create() {
         [itemInstance: new Item(params)]
     }
-
+		
     def save() {
         def itemInstance = new Item()
-		itemInstance.currentQuantity = params.currentQuantity;
+		itemInstance.currentQuantity = params.currentQuantity.toInteger();
 		itemInstance.description = params.description;
 		itemInstance.expiryDate = params.expiryDate;
 		itemInstance.itemType = params.itemType;
-		itemInstance.minStockLevel = params.minStockLevel;
+		itemInstance.minStockLevel = params.minStockLevel.toInteger();
 		itemInstance.name = params.name;
-		itemInstance.retailPrice = params.retailPrice;
+		itemInstance.retailPrice = params.retailPrice.toDouble();
+		itemInstance.isActive= true
 		itemInstance.hasReachedMinimum = false
         if (!itemInstance.save(flush: true)) {
             render(view: "create", model: [itemInstance: itemInstance])

@@ -67,16 +67,18 @@
 					  		  
 				  </dl>
 				  			
-<%--				<g:if test="${patientInstance?.diagnoses}">--%>
-<%--				<li class="fieldcontain">--%>
-<%--					<span id="diagnoses-label" class="property-label"><g:message code="patient.diagnoses.label" default="Diagnoses" /></span>--%>
-<%--					--%>
-<%--						<g:each in="${patientInstance.diagnoses}" var="d">--%>
-<%--						<span class="property-value" aria-labelledby="diagnoses-label"><g:link controller="diagnosis" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>--%>
-<%--						</g:each>--%>
-<%--					--%>
-<%--				</li>--%>
-<%--				</g:if>--%>
+				<g:if test="${patientInstance?.diagnoses}">
+				<li class="fieldcontain">
+					<span id="diagnoses-label" class="property-label"><g:message code="patient.diagnoses.label" default="Diagnoses" /></span>
+					
+						<g:each in="${patientInstance.diagnoses}" var="d">
+						<span class="property-value" aria-labelledby="diagnoses-label"><g:link controller="diagnosis" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+				<g:link controller="DiagnosisController" action="create">add diagnosis</g:link>
+				
 <%--			--%>
 <%--				<g:if test="${patientInstance?.laboratoryResults}">--%>
 <%--				<li class="fieldcontain">--%>

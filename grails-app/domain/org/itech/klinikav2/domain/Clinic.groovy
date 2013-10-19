@@ -1,39 +1,36 @@
 package org.itech.klinikav2.domain
-
-import utils.ReportGenerator;
-
 /**
  * 
  * @author Randy
  *
  */
+@Singleton
 class Clinic {
-
+	String clinicName
+	String clinicHours
 	String address
-	String background
-	String clinicHourEnd
-	String clinicHourStart
-	Date dateToday
-	String mobileNumber
-	String name
-	String telNumber
+	String mobileNum
+	String telNum
+	String mission
+	String vision
+	String location
+	String facebookUrl
+	String twitterUrl
+	String email
 	
-	static hasOne = [inventory:Inventory]
+	Profile profile
 	
-	
-	public void closeOut()
-	{
-			}
-	
-	public void setDateToday()
-	{
-		inventory.update();
-	}
-	
-	public void initialize()
-	{
-		setDateToday();
-	}
-	
-	//public void makeAppointmentPayment()
+    static constraints = {
+		clinicName blank: false
+		clinicHours blank: false
+		address blank: false, widget: 'textarea'
+		mobileNum blank: false
+		telNum blank: false
+		mission blank: false
+		vision blank: false
+		location: blank: false
+		facebookUrl blank: true
+		twitterUrl blank: true
+		email blank: false, email: true
+    }
 }

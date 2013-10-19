@@ -6,23 +6,36 @@ import org.itech.klinikav2.domain.Item;
 
 class ItemNotifier {
 
-//	ExpirationReminder reminder = ExpirationReminder.getInstance();
+	Item item
+	//	ExpirationReminder reminder = ExpirationReminder.getInstance();
 	int expirationReminderDays
-	
-	public static void update(Item item) {		
-			def itemCurrentQuantity = item.currentQuantity
-			if( itemCurrentQuantity <= item.minimumStockLevel)
+	def grailsApplication
+
+	def setExpiryDayReminder(){
+		//		grailsApplication.config.utils.expirationReminderDays = days
+		ConfigObject c = grailsApplication.config.utils.expirationReminderDays
+		grailsApplication.config.merge(c)
+		render grailsApplication.config.utils.expirationReminderDays
+	}
+
+	public final def getExpiryDayReminder(){
+		return grailsApplication.config.utils.expirationReminderDays
+	}
+
+	public static final void update(Item item) {
+		def itemCurrentQuantity = item.currentQuantity
+		if( itemCurrentQuantity <= item.minimumStockLevel)
+		{
+			if(item.hasReachedMinimum == true)
 			{
-				if(item.hasReachedMinimum == true)
-				{			
-					notifyMinStocks(item);		
-				}
-				else
-				{
-					item.hasReachedMinimum = true
-					notifyMinStocks(item);
-				}
-			}					
+				notifyMinStocks();
+			}
+			else
+			{
+				item.hasReachedMinimum = true
+				notifyMinStocks();
+			}
+		}
 	}
 
 	public Boolean notifyExpiration(Date date) {
@@ -38,9 +51,13 @@ class ItemNotifier {
 		}
 	}
 
-	public void notifyMinStocks(Item item){
-		//codes here to tell the user that the item has min stocks
+	public static void notifyMinStocks(Map data) {
+
+		event([namespace: 'browser', topic: 'notifyMinStocks', data:data]) // send the message to only browsers registered for this chatroom
 	}
+	//	public void
+	//		//codes here to tell the user that the item has min stocks
+	//	}
 
 
 

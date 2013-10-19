@@ -35,6 +35,28 @@ class Patient {
 //	assert emptyList.size() == 0
 //	emptyList.add(5)
 		
+	static constraints = 
+	{
+		firstName blank:false
+		middleName blank: false
+		lastName blank:false
+		birthDate blank:false
+		gender blank:false
+		maritalStatus blank:false
+		emailAddress email:true
+		address_city blank:true
+		address_street blank:true
+		address_town blank:false
+		address_province blank: false
+		mobileNumber maxSize:11, validator:{val, obj->
+			if(val.substring(0,2) != "09")
+			{
+				return 'item.wrongStart.mobileNum'
+			}			 
+		}
+		telNumber blank:true
+	}
+	
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
 		laboratoryResults:LaboratoryResult]
 		
@@ -49,8 +71,7 @@ class Patient {
 			Date birthDate, Gender gender, MaritalStatus maritalStatus,
 			Date dateOfRegistration, String emailAddress, String address_city,
 			String address_street, String address_town,
-			String address_province, String mobileNumber, String telNumber,
-			Boolean isActive, Boolean isDeleted) {
+			String address_province, String mobileNumber, String telNumber) {
 		super();
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -66,8 +87,8 @@ class Patient {
 		this.address_province = address_province;
 		this.mobileNumber = mobileNumber;
 		this.telNumber = telNumber;
-		this.isActive = isActive;
-		this.isDeleted = isDeleted;
+		this.isActive = true;
+		this.isDeleted = false;
 	}
 
 	
