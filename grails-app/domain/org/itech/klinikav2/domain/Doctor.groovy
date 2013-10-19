@@ -12,7 +12,7 @@ class Doctor extends Profile{
 	String clinicHourStart
 	
 	static hasMany = [receptionists: Receptionist]
-	
+	static hasOne = [schedule:Schedule]
 	
     static constraints = {
     }

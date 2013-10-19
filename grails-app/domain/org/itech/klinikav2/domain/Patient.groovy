@@ -94,7 +94,7 @@ class Patient {
 	def createPurchase()
 	{
 		logActivity(ActivityType.PURCHASE)
-		Invoice purhaseInvoice = new 
+		Invoice purhaseInvoice = new ItemInvoice()
 	}
 	
 }

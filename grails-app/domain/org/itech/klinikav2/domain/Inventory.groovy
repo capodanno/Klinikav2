@@ -28,8 +28,8 @@ class Inventory {
 		item.setCurrentQuantity(newQuantity);
 	}
 
-	public void subtractQuantity(Item item) {
-		int newQuantity= item.currentQuantity--;
+	public void subtractQuantity(Item item, int quantity) {
+		int newQuantity= item.currentQuantity - quantity;
 		item.setCurrentQuantity(newQuantity);
 	}
 

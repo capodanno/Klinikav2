@@ -24,7 +24,9 @@ class Clinic {
 	Date dateToday
 	List<Profile> profiles = new ArrayList<Profile>()
 	List<PatientQueue> queues= new ArrayList<PatientQueue>()
+
 	Inventory inventory = Inventory.getInstance()
+	Revenue revenue = Revenue.getInstance()
 	
 	//singleton class methods
 	private static final INSTANCE = new Clinic()
@@ -59,6 +61,7 @@ class Clinic {
 	}
 	
 	//this has the activities that the clinic does upon closing 
+	def closeOut()
 	{
 		
 	}
@@ -74,10 +77,10 @@ class Clinic {
 		
 	}
 	
-	def makePurchase(QueueElement queueElement)
+	def makePurchase(Item item, int quantity, QueueElement queueElement)
 	{
-		
-		
+		def patient = queueElement.patient
+		revenue.makePurchasePayment(item, patient)			
 	}
 
 	
