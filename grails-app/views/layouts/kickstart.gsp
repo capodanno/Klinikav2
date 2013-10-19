@@ -25,6 +25,9 @@
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'famfamfam.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'datepicker.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-timepicker.min.css')}" type="text/css">
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-overrides.css')}" type="text/css">
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery-ui-1.8.7.custom.css')}" type="text/css">
+	
 	<style type="text/css">
 		.top
 		{
@@ -98,6 +101,20 @@
     <script type="text/javascript" src="js/boot-business.js"></script>	
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="js/TableTools.js"></script>
+	<script type="text/javascript" src="js/ZeroClipboard.js"></script>
+	<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+	<script src="js/globalize.js" type="text/javascript"></script>
+    <script src="js/globalize.culture.en-US.js" type="text/javascript"></script>
+	<script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.8.17.min.js" type="text/javascript"></script>
+	<script src="js/modernizr-2.0.6-development-only.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	Globalize.culture("en-US");
+    </script>
+		
 	<r:layoutResources />
 </body>
 

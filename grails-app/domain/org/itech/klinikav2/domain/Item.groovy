@@ -18,7 +18,7 @@ class Item {
 	Boolean hasReachedMinimum
 	Boolean newInstance
 
-	static hasOne = [notifier:ItemNotifier]
+	static hasOne = ItemNotifier
 	static constraints = {
 		currentQuantity blank:false, min:1	
 		description blank:true, nullable:true

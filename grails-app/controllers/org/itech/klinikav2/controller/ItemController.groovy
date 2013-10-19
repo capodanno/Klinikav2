@@ -21,7 +21,7 @@ class ItemController {
 	//This will list the Items with Low Stock Level
 	def listItemsWithMinimumStockLevel(Integer max){
 		params.max = Math.min(max ?: 10, 100)
-		[itemInstanceList: Item.where {hasReachedMinimum == true}, itemInstanceTotal: Item.count()]
+		[itemInstanceList: Item.where {currentQuantity == minStockLevel}, itemInstanceTotal: Item.count()]
 		
 		
 	}
