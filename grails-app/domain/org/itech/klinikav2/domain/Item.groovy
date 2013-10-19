@@ -5,6 +5,8 @@ import java.util.Date;
 import org.codehaus.groovy.grails.commons.GrailsApplication;
 import org.itech.klinikav2.enums.ItemType;
 
+import utils.ItemNotifier;
+
 class Item {
 
 	int currentQuantity
@@ -18,7 +20,7 @@ class Item {
 
 	Boolean hasReachedMinimum
 	Boolean newInstance
-		
+
 	static constraints = {
 		currentQuantity blank:false, min:1
 		expiryDate validator:{ val, obj ->
@@ -30,13 +32,12 @@ class Item {
 			}
 		}
 
-		retailPrice blank: false 
+		retailPrice blank: false
 		description blank:true, nullable:true
 
 		minStockLevel min:0
 		name blank:false
 		retailPrice nullable:true, blank:true
-
 	}
 
 	public Item(int currentQuantity, String description, Date expiryDate, ItemType itemType, int minStockLevel,
@@ -57,16 +58,11 @@ class Item {
 	public void setCurrentQuantity(int newQuantity) {
 		if(newInstance == true){
 			currentQuantity = newQuantity;
-			notifier.update();
+			ItemNotifier.update();
 		}
 		else{
 			currentQuantity = newQuantity;
 			newInstance=false
 		}
-
-	}
-
-	public Boolean checkExpiry(Date dateToday) {
-		return notifier.notifyExpiration(dateToday);
 	}
 }

@@ -10,4 +10,8 @@ class QueueElement {
 	Patient patient
 	String timeAdmitted
 
+	def Invoice generateInvoice(patient)
+	{
+		
+	}
 }

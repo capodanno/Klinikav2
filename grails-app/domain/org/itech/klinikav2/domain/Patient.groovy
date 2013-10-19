@@ -58,7 +58,7 @@ class Patient {
 	}
 	
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
-		laboratoryResults:LaboratoryResult]
+		laboratoryResults:LaboratoryResult, invoices:Invoice]
 		
 	public void logActivity(def activityType)
 	{
@@ -91,5 +91,10 @@ class Patient {
 		this.isDeleted = false;
 	}
 
+	def createPurchase()
+	{
+		logActivity(ActivityType.PURCHASE)
+		Invoice purhaseInvoice = new 
+	}
 	
 }
