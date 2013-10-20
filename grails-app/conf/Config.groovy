@@ -103,6 +103,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/event/**':              		  ['permitAll'],
 	'/home/index/**':              	  ['permitAll'],
 	'/clinic/**':              	  ['permitAll'],
+	'/patient/**':              	  ['permitAll'],
+	'/vitalSigns/**':              	  ['permitAll'],
+	'/**': 								['permitAll'],
 ]
 
 // log4j configuration

@@ -21,7 +21,7 @@ class VitalSignsController {
         [vitalSignsInstanceList: VitalSigns.list(params), vitalSignsInstanceTotal: VitalSigns.count()]
     }
 
-    def create(Long id) {
+    def create() {
         [vitalSignsInstance: new VitalSigns(params)]
     }
 
@@ -43,7 +43,6 @@ class VitalSignsController {
             redirect(action: "list")
             return
         }
-
         [vitalSignsInstance: vitalSignsInstance]
     }
 
