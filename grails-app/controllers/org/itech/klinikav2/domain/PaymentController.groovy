@@ -14,13 +14,22 @@ class PaymentController {
         redirect(action: "list", params: params)
     }
 
-	def listBalances(){
-		params.max = Math.max(params.max ? params.int('max') : 10, 100)
-		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceList: Payment.count()]
-}
+
+	def listBalances(Integer max){
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceTotal: Payment.count()]
+		
+		}
+
+//	def listBalances(Integer max){
+//		params.max = Math.min(max ?: 10, 100)
+//		[paymentInstanceList: Payment.where{hasBalance==true}, checkUpInvoiceInstanceList: CheckUpInvoice.count()]
+//
+//}
 	
 	//This will List all the payments
-    def list() {
+    
+	def list(Integer max) {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [paymentInstanceList: Payment.list(params), paymentInstanceTotal: Payment.count()]
     }

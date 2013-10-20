@@ -9,10 +9,12 @@ package org.itech.klinikav2.domain
 class Payment {
 
 	Double amountPaid
+	Double balance
 	Date date
-	boolean hasBalance=true
+	boolean hasBalance
 	
-	static hasOne = [patient:Patient]
+	
+	static hasOne  = [patient:Patient]
 	static hasMany = [invoices:Invoice]
 	//Invoice invoice, since wala pa mahimo ang class
 }
