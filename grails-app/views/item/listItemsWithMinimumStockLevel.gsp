@@ -3,19 +3,59 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<r:require module="export"/>
+	
+	<export:resource />
 	
 <style type="text/css" title="currentStyle">
-@import "web-app/css/demo_table.css";
+@import "../css/demo_table.css";
 </style>
 		<meta name="layout" content="kickstart">
 		<g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<script type="text/javascript"  src="./js/jquery.js"></script><style type="text/css"></style>
+		<script type="text/javascript"  src="./js/jquery.dataTables.js"></script>
+		
+		<script src="./js/modernizr-2.0.6-development-only.js" type="text/javascript"></script>
+    	<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    	<link href="./css/bootstrap-overrides.css" rel="stylesheet" type="text/css">
+    	<script src="./js/jquery-1.5.1.min.js" type="text/javascript"></script>
+    	<script src="./js/jquery-ui-1.8.17.min.js" type="text/javascript"></script>
+		<script src="./js/globalize.js" type="text/javascript"></script>
+    	<script src="./js/globalize.culture.en-US.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        Globalize.culture("en-US");
+    </script>
+    
+    <style type="text/css"></style><script type="text/javascript" src="js/prettify.min.js" id="script-httpbaluptongithubcomjquerysyntaxhighlighterprettifyprettifyminjs"></script><link type="text/css" rel="stylesheet" media="screen" href="css/prettify.min.css" id="stylesheet-httpbaluptongithubcomjquerysyntaxhighlighterprettifyprettifymincss"><link type="text/css" rel="stylesheet" media="screen" href="css/style.min.css" id="stylesheet-httpbaluptongithubcomjquerysyntaxhighlighterstylesstylemincss"><link type="text/css" rel="stylesheet" media="screen" href="css/theme-balupton.min.css" id="stylesheet-httpbaluptongithubcomjquerysyntaxhighlighterstylesthemebaluptonmincss"></head>
+<body>		
+		
+  <div class="container">
+        <link type="text/css" href="css/jquery.dataTables_themeroller.css" rel="stylesheet">
+<script src="js/jquery.dataTables.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
+<script src="js/ZeroClipboard.js" type="text/javascript"></script>
+<script src="js/TableTools.js" type="text/javascript"></script>
+<link type="text/css" href="css/TableTools.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.syntaxhighlighter.min.js"></script>
+<script type="text/javascript">    $.SyntaxHighlighter.init();</script>		
+
+<script type="text/javascript">
+    function test(data, type, full) {
+        return '<i>' + data + '</i>';
+    }
+    
+    function drawCallback(oSettings) {
+        console.log('fnDrawCallback fired');
+        console.log(oSettings);
+    }
+
+		
+
+
+</script></head>
 	
-	
-	
-	
-	<script type="text/javascript" async="" src="http://s3.buysellads.com/ac/bsa.js"></script></head>
-	<body id="dt_MinItem">
 	
 	<script type="text/javascript">
 
@@ -35,8 +75,6 @@
 	
 	
 	</head>
-	
-	<body>
 	<div class="content">
 	
 	<div class="container">
@@ -48,24 +86,7 @@
 	
 	</h1>
 	
-	
-	
 
-<div style="padding: 5px; border: 1px solid grey">
-    Custom placement for Position filter:
-    <div id="custom-filter-placeholder-position"><span class="filterColumn filter_select"><select class="search_init select_filter"><option value="" class="search_init">Item Type</option><option value="%5EMEDICINE%24">Medicine</option><option value="%5EEQUIPMENT%24">Equipment</option><option value="%5VAC%24">Manager</option></select></span></div>
-</div>
-
-<script type="text/javascript">
-    function test(data, type, full) {
-        return '<i>' + data + '</i>';
-    }
-    
-    function drawCallback(oSettings) {
-        console.log('fnDrawCallback fired');
-        console.log(oSettings);
-    }
-</script>
 <div id="table-id_wrapper" class="dataTables_wrapper" role="grid"><div class="DTTT_container">
 	<button class="btn btn-primary" id="ToolTables_table-id_0">Copy</button>
 		<div style="position: absolute; left: 50px; top: 20px; width: 43px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="43" height="30" name="ZeroClipboard_TableToolsMovie_0" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=43&amp;height=30" wmode="transparent"></div>
@@ -73,55 +94,9 @@
 			<div style="position: absolute; left: 20px; top: 20px; width: 37px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="37" height="30" name="ZeroClipboard_TableToolsMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=37&amp;height=30" wmode="transparent"></div>
 			<button class="btn btn-primary" id="View_Print">Print</button>
 			</div><div class="clear"></div><div id="MinItem_length" class="dataTables_length">
-			<label>Show <select size="1" name="table-id_length" aria-controls="MinItem"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">All</option></select> entries</label></div><div class="dataTables_filter" id="MinItem_filter"><label>Search: <input type="text" aria-controls="MinItem"></label></div>
-   
+			<label>Show <select size="1" name="table-id_length" aria-controls="MinItem"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">All</option></select> entries</label></div>
+
     
-<script type="text/javascript">
-    (function setDataTable() {
-        if(!window.jQuery) {
-            setTimeout(setDataTable, 100);
-            return;
-        }
-        var $table = $('#MinItem');
-        var dt = $table.dataTable({
-            "aaSorting": [[0,"asc"]],
-            "bProcessing": true,
-            "bStateSave": true,
-            "bServerSide": true,
-            "bFilter": true,
-            "sDom": 'T<"clear">lftipr',
-            "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-            "bAutoWidth": false,
-            "sAjaxSource": "/Home/GetUsers", "oTableTools" : { "sSwfPath": "/content/DataTables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf" },
-            "fnServerData": function(sSource, aoData, fnCallback) {
-                $.ajax({
-                    "dataType": 'json',
-                    "type": "POST",
-                    "url": sSource,
-                    "data": aoData,
-                    "success": fnCallback
-                });
-            },
-            "aoColumnDefs" : [{"bSortable":false,"aTargets":[3]},{"bVisible":false,"aTargets":[7]},{"bSearchable":false,"aTargets":[2]},{"mRender":test,"aTargets":[1]}]
-                , "fnCreatedRow":function( nRow, aData, iDataIndex ) {
-        $(nRow).attr('data-id', aData[0]);
-      }
-    
-            });
-                
-                    dt.columnFilter({
-                        sPlaceHolder: "head:before",
-                        aoColumns: [{type: 'number-range'},{type: 'text'},null,{type: 'checkbox', values : ['True', 'False']},{type: 'select', values: ['Engineer','Tester','Manager'], "sSelector":"#custom-filter-placeholder-position"},{type: 'date-range'},{type: 'checkbox', values : ['Zero','One','Two','Three','Four']},{type: 'text'}]
-                    });
-                
-    })();
-</script>
-
-
-
-
-	
-	
 	
 		<div id="list-item" class="content scaffold-list" role="main">
 			<g:if test="${flash.message}">
@@ -129,27 +104,7 @@
 			</g:if>
 			
 			
-			<script>
-	$(document).ready( function () {
-		$('#ItemMin').dataTable( {
-			"sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-			"oTableTools": {
-				"aButtons": [
-					"copy",
-					{
-						"sExtends":    "collection",
-						"sButtonText": 'Save <span class="caret" />',
-						"sButtons":    [ "csv", "pdf" ]
-					}
-				]
-			}
-		} );
-	} );
-	</script>
-	
-	
-	
-			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="MinItem">
+			<table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="MinItem">
 				<thead>
 					<tr>
 					
@@ -176,6 +131,10 @@
 				</tbody>
 			</table>
 			
+			<div class="paginateButtons">
+    	<g:paginate total="${Item.count()}" />
+		</div>
+		<export:formats formats="['csv', 'excel', 'ods', 'pdf', 'rtf', 'xml']" />
 			
 			<div class="pagination">
 				<g:paginate total="${itemInstanceTotal}" />
@@ -185,4 +144,7 @@
 		</div>
 		</div>
 	</body>
+	
+	</div>
+</body>
 </html>

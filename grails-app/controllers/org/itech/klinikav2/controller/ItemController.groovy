@@ -8,10 +8,14 @@ class ItemController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def exportService
+	def grailsApplication
+	
     def index() {
         redirect(action: "list", params: params)
     }
 
+	
 	//This will list the Items and its Details
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -19,10 +23,18 @@ class ItemController {
     }
 	
 	//This will list the Items with Low Stock Level
-	def listItemsWithMinimumStockLevel(Integer max){
-		params.max = Math.min(max ?: 10, 100)
+	def listItemsWithMinimumStockLevel={
+		if(!params.max) params.max = 10
+			if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=item.${params.extension}")
+
+			exportService.export(params.format, response.outputStream, Item.list(params), fields, lables, [:], [:])
+			
+			
+			
+		}
 		[itemInstanceList: Item.where {currentQuantity == minStockLevel}, itemInstanceTotal: Item.count()]
-		
 		
 	}
 
