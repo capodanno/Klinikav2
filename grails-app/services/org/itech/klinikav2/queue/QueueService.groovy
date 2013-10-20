@@ -1,14 +1,18 @@
 package org.itech.klinikav2.queue
 
 import org.itech.klinikav2.domain.Appointment
+import org.itech.klinikav2.domain.Clinic;
 import org.itech.klinikav2.domain.NewAppointment;
 import org.itech.klinikav2.domain.Patient
 import org.itech.klinikav2.domain.PatientQueue
 import org.itech.klinikav2.domain.QueueElement
 import org.itech.klinikav2.enums.AppointmentType;
 
+import utils.PatientCounter;
+
 class QueueService {
 	
+	Clinic clinic = Clinic.getInstance()
 	def addToQueue(Appointment appointment,PatientQueue queue )
 	{
 		if(appointment.instanceOf(NewAppointment))
@@ -42,14 +46,15 @@ class QueueService {
 		queue.save()		
 	}
 	
-	def removeFromQueue (QueueElement queueElement, Queue queue)
+	def removeFromQueue (QueueElement queueElement)
 	{
 		queue.removeFromQueueElements(queueElement)
 	}
 	
-	def admitQueueElement(QueueElement queueElement)
+	def nextElement(PatientQueue patientQueue,QueueElement queueElement)
 	{
-		
+		patientQueue.delete(queueElement)
+		PatientCounter.addCount(clinic.counterToday)
 	}
 	
 	

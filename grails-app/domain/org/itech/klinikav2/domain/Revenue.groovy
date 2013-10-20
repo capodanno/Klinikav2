@@ -6,7 +6,10 @@ package org.itech.klinikav2.domain
 
 @Singleton
 class Revenue {
-	Double totalRevenue
+	Double totalRevenue= 0
+	Double salesRevenue=0
+	Double appointmentRevenue=0
+	
 	Inventory inventory = Inventory.getInstance()
 	
 	//singleton class methods

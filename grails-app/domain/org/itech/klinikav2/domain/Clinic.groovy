@@ -23,6 +23,7 @@ class Clinic {
 
 	PatientQueue queueToday
 	Date dateToday
+	DailyCounter counterToday
 	static hasMany = [profiles:Profile,patientQueues:PatientQueue]
 
 	Inventory inventory = Inventory.getInstance()
@@ -54,11 +55,15 @@ class Clinic {
 	//this has the activities that the Clinic does everyday
 	def initialize()
 	{
-		dateToday = new Date()
-		addToPatientQueues.(new PatientQueue (dateToday))
-		queueToday = PatientQueue.findByDate(dateToday)
-		inventory.update(dateToday);
-		
+		if(dateToday!= new Date())
+		{
+			closeOut()
+			dateToday = new Date()
+			addToPatientQueues.(new PatientQueue (dateToday))
+			queueToday = PatientQueue.findByDate(dateToday)
+			inventory.update(dateToday);
+			counterToday = new DailyCounter(dateToday)
+		}		
 	}
 	
 	//this has the activities that the clinic does upon closing 

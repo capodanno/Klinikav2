@@ -17,7 +17,7 @@ class PatientController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	
+	static scaffold = true
 	def index() {
 		//test of web API
 //		def sms = new SMSNotifier()
@@ -114,6 +114,8 @@ class PatientController {
 		patientInstance.address_province = params.address_province;
 		patientInstance.mobileNumber = params.mobileNumber;
 		patientInstance.telNumber = params.telNumber;
+		patientInstance.isActive = true
+		patientInstance.isDeleted=false
 		patientInstance.save()
 		if (!patientInstance.save(flush: true)) {
 			render(view: "create", model: [patientInstance: patientInstance])

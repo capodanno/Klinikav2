@@ -10,5 +10,6 @@ class MedicalHistory {
 	String pastIllness
 	String pastMedications
 
+	static scaffold= true
 	static belongsTo = [patient:Patient]
 }

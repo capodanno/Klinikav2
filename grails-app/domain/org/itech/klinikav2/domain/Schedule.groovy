@@ -8,7 +8,9 @@ package org.itech.klinikav2.domain
 
 class Schedule {
 
-	static hasOne = [doctor: Doctor]
-		
+	static hasMany = [events:Event]
+	static belongsTo = [doctor: Doctor]
+	
+	static scaffolding = true
 
 }

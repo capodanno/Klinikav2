@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="kickstart">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -70,16 +70,11 @@
 				<g:if test="${patientInstance?.diagnoses}">
 				<li class="fieldcontain">
 					<span id="diagnoses-label" class="property-label"><g:message code="patient.diagnoses.label" default="Diagnoses" /></span>
-					
-						<g:each in="${patientInstance.diagnoses}" var="d">
+					<g:each in="${patientInstance.diagnoses}" var="d">
 						<span class="property-value" aria-labelledby="diagnoses-label"><g:link controller="diagnosis" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
+						</g:each>					
 				</li>
 				</g:if>
-				<g:link controller="DiagnosisController" action="create">add diagnosis</g:link>
-				
-<%--			--%>
 <%--				<g:if test="${patientInstance?.laboratoryResults}">--%>
 <%--				<li class="fieldcontain">--%>
 <%--					<span id="laboratoryResults-label" class="property-label"><g:message code="patient.laboratoryResults.label" default="Laboratory Results" /></span>--%>
@@ -162,6 +157,9 @@
 					
 				</li>
 				</g:if>
+			
+			
+			<g:link controller="item" action="create">Create Item</g:link>
 			
 			<g:form>
 				<fieldset class="buttons">

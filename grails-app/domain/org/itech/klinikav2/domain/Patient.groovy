@@ -58,7 +58,7 @@ class Patient {
 	}
 	
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
-		laboratoryResults:LaboratoryResult, invoices:Invoice]
+		laboratoryResults:LaboratoryResult, payments:Payment, ]
 	
 	static mapping ={
 		vitalSigns cascade: "all-delete-orphan"
@@ -97,8 +97,8 @@ class Patient {
 		this.address_province = address_province;
 		this.mobileNumber = mobileNumber;
 		this.telNumber = telNumber;
-		this.isActive = true;
-		this.isDeleted = false;
+		this.isActive = true
+		this.isDeleted = false
 	}
 
 	def createPurchase()

@@ -14,6 +14,7 @@ class Doctor extends Profile{
 	static hasMany = [receptionists: Receptionist]
 	static hasOne = [schedule:Schedule]
 	
+	static scaffolding = true
     static constraints = {
     }
 	
