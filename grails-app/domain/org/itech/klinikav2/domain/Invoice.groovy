@@ -11,7 +11,7 @@ abstract class Invoice {
 	
 	int number
 	Date date
-	boolean hasBalance
+	
 	String payer
 	Double totalAmount
 	PaymentOption paymentOption
@@ -19,6 +19,8 @@ abstract class Invoice {
 	Doctor doctor
 	Patient patient
 
+	static belongsTo = [payment:Payment]
+	
     static constraints = {
     }
 }

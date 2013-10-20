@@ -9,4 +9,7 @@ package org.itech.klinikav2.domain
 class Diagnosis {
 	Date date
 	String details
+	
+	static scaffold= true
+	static belongsTo = [patient:Patient]
 }

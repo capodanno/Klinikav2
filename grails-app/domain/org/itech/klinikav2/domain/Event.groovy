@@ -13,6 +13,7 @@ class Event {
 	Date eventStart
 	Date eventEnd
 	
+	static belongsTo = Doctor
     static constraints = { 
 		 
     }

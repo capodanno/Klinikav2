@@ -1,8 +1,9 @@
 package org.itech.klinikav2.controller
 
 import org.itech.klinikav2.domain.Item;
-import org.itech.klinikav2.domain.ItemNotifier;
 import org.springframework.dao.DataIntegrityViolationException
+
+import utils.ItemNotifier;
 
 class ItemController {
 
@@ -12,7 +13,9 @@ class ItemController {
 	def grailsApplication
 	
     def index() {
-        redirect(action: "list", params: params)
+//        redirect(action: "list", params: params)
+		
+		ItemNotifier.notifyMinStocks()
     }
 
 	
@@ -41,7 +44,7 @@ class ItemController {
     def create() {
         [itemInstance: new Item(params)]
     }
-
+		
     def save() {
         def itemInstance = new Item()
 		itemInstance.currentQuantity = params.currentQuantity.toInteger();
@@ -51,6 +54,7 @@ class ItemController {
 		itemInstance.minStockLevel = params.minStockLevel.toInteger();
 		itemInstance.name = params.name;
 		itemInstance.retailPrice = params.retailPrice.toDouble();
+		itemInstance.isActive= true
 		itemInstance.hasReachedMinimum = false
         if (!itemInstance.save(flush: true)) {
             render(view: "create", model: [itemInstance: itemInstance])

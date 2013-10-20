@@ -14,6 +14,7 @@ class Prescription {
 	String age
 //	Doctor doctor 
 	
+	static belongsTo = [patient:Patient]
 	public int calculatePatientAge(){
 		//insert logic codes here
 	}
