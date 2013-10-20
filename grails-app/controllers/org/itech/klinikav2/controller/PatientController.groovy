@@ -25,7 +25,7 @@ class PatientController {
 //		render result
 	}
 	public def addLog(Long id) {
-		def patientInstance = Patient.get(id)
+		def patientInstance = Patient.get(id)		
 		patientInstance.logActivity(params.activityType)
 		redirect(action: "show", id: patientInstance.id)
 	}
@@ -96,7 +96,7 @@ class PatientController {
 
 	def create() {
 		[patientInstance: new Patient(params)]
-	}
+	}	
 
 	def save() {
 		def patientInstance = new Patient()

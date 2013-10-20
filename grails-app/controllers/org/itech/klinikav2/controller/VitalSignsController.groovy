@@ -21,7 +21,7 @@ class VitalSignsController {
         [vitalSignsInstanceList: VitalSigns.list(params), vitalSignsInstanceTotal: VitalSigns.count()]
     }
 
-    def create() {
+    def create(Long id) {
         [vitalSignsInstance: new VitalSigns(params)]
     }
 

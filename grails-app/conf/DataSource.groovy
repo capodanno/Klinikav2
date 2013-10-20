@@ -14,7 +14,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url =  "jdbc:mysql://localhost/klinika_db?useUnicode=yes&characterEncoding=UTF-8"
+            url =  "jdbc:mysql://localhost/klinika_db2?useUnicode=yes&characterEncoding=UTF-8"
 			username = "root"
 			password = ""
         }

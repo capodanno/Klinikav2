@@ -82,6 +82,29 @@ environments {
 	}
 }
 
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'org.itech.klinikav2.domain.SecUser'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'org.itech.klinikav2.domain.SecUserSecRole'
+grails.plugin.springsecurity.authority.className = 'org.itech.klinikav2.domain.SecRole'
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+	'/standardUser/**':               ['permitAll'],
+	'/secRole/**':                    ['permitAll'],
+	'/secUserSecRole/**':             ['permitAll'],
+	'/admin/**':             		  ['permitAll'],
+	'/doctor/**':              		  ['permitAll'],
+	'/event/**':              		  ['permitAll'],
+	'/home/index/**':              	  ['permitAll'],
+	'/clinic/**':              	  ['permitAll'],
+]
+
 // log4j configuration
 log4j = {
 	// Example of changing the log pattern for the default console appender:
@@ -107,6 +130,10 @@ grails.config.defaults.locations = [KickstartResources]
 //smsGateway properties
 org.klinikav2.sms.modemPort="/dev/COM7"
 utils.expirationReminderDays="30"
+
+
+
+
 
 
 

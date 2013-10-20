@@ -1,6 +1,6 @@
 package org.itech.klinikav2.domain
 
-abstract class NormalUser extends User{
+class StandardUser extends User{
 
 	Profile profile
 	

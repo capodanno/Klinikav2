@@ -12,6 +12,7 @@ class QueueElement {
 	Patient patient
 	String timeAdmitted
 
+	static hasOne = Patient
 	
 	public QueueElement(AppointmentType appointmentType, 
 		String complaints, Date date, Patient patient, 

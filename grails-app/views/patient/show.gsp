@@ -160,7 +160,7 @@
 			
 			
 			<g:link controller="item" action="create">Create Item</g:link>
-			
+				<g:link controller="vitalSigns" action="create" id="${patientInstance?.id}">Add Vital Signs</g:link>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${patientInstance?.id}" />
