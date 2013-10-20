@@ -17,13 +17,13 @@ abstract class Profile {
 		lastName blank: false, matches: /[A-Z].*/
 		birthdate blank: false
 		address blank: false, matches: /[A-Z].*/
-		mobileNumber blank: false
+		mobileNumber blank: false, matches: /^(0|63|\+63)\d{10}$/
 		email blank: true, email: true
 		
     }
 	
 	public String toString(){
-		String fullname = firstName + " " + lastName
+		String fullname = firstName + " " + middleName.substring(0, 1).toUpperCase() + ". " + lastName
 		return fullname
 	}
 	

@@ -87,16 +87,7 @@
 	</h1>
 	
 
-<div id="table-id_wrapper" class="dataTables_wrapper" role="grid"><div class="DTTT_container">
-	<button class="btn btn-primary" id="ToolTables_table-id_0">Copy</button>
-		<div style="position: absolute; left: 50px; top: 20px; width: 43px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="43" height="30" name="ZeroClipboard_TableToolsMovie_0" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=43&amp;height=30" wmode="transparent"></div>
-		<button class="btn btn-primary" id="ToolTables_table-id_1">PDF</button>
-			<div style="position: absolute; left: 20px; top: 20px; width: 37px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="media/swf/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="37" height="30" name="ZeroClipboard_TableToolsMovie_2" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=4&amp;width=37&amp;height=30" wmode="transparent"></div>
-			<button class="btn btn-primary" id="View_Print">Print</button>
-			</div><div class="clear"></div><div id="MinItem_length" class="dataTables_length">
-			<label>Show <select size="1" name="table-id_length" aria-controls="MinItem"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="-1">All</option></select> entries</label></div>
-
-    
+ 
 	
 		<div id="list-item" class="content scaffold-list" role="main">
 			<g:if test="${flash.message}">
@@ -108,24 +99,24 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="currentQuantity" title="${message(code: 'item.currentQuantity.label', default: 'Current Quantity')}" />
-					
+						<g:sortableColumn property="name" title="${message(code: 'item.name.label', default: 'Name')}" />
 						<g:sortableColumn property="description" title="${message(code: 'item.description.label', default: 'Description')}" />
 															
 						<g:sortableColumn property="itemType" title="${message(code: 'item.itemType.label', default: 'Item Type')}" />
 					
+						<g:sortableColumn property="currentQuantity" title="${message(code: 'item.currentQuantity.label', default: 'Current Quantity')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${itemInstanceList}" status="i" var="itemInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "currentQuantity")}</g:link></td>
-					
+						<td>${fieldValue(bean: itemInstance, field: "name")}</td>
 						<td>${fieldValue(bean: itemInstance, field: "description")}</td>
 					
 						<td>${fieldValue(bean: itemInstance, field: "itemType")}</td>
-					
+						
+						<td>${fieldValue(bean: itemInstance, field: "currentQuantity")}</td>
 					</tr>
 				</g:each>
 				</tbody>

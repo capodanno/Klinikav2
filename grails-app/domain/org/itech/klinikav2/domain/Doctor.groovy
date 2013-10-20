@@ -11,10 +11,11 @@ class Doctor extends Profile{
 	String clinicHourEnd
 	String clinicHourStart
 	
-	static hasMany = [receptionists: Receptionist]
+	static hasMany = [receptionists: Receptionist, schedEvents:Event]
 	
-	
-    static constraints = {
+	//static scaffolding = true
+    static constraints = {		
+	 
     }
 	
 }

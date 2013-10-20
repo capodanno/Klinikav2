@@ -14,6 +14,10 @@ class PaymentController {
         redirect(action: "list", params: params)
     }
 
+	def listBalances(){
+		params.max = Math.max(params.max ? params.int('max') : 10, 100)
+		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceList: Payment.count()]
+}
 	
 	//This will List all the payments
     def list() {

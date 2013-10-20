@@ -32,12 +32,14 @@ grails.project.dependency.resolution = {
 
         mavenLocal()
         mavenCentral()
+		mavenRepo "https://oss.sonatype.org/content/repositories/snapshots/"
 
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+		mavenRepo 'http://repo.spring.io/milestone'
     }
 
     dependencies {
@@ -54,18 +56,31 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.8.3"
         runtime ":resources:1.2"
+		
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
+		compile ":kickstart-with-bootstrap:0.9.6"
+		compile ":font-awesome-resources:3.2.1.3"
+		compile ":lesscss-resources:1.3.3"
+		compile ":resources:1.2.1"
+		compile ":rest:0.7"
+		compile ":webxml:1.4.1"
+		
+		compile ":events-push:1.0.M7"
+		compile ":platform-core:1.0.RC5"
+		
+		// Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.5"
-
+		
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.3.2"
 
         compile ':cache:1.0.1'
 		
+		compile ':spring-security-core:2.0-RC2'
+				
 		'commons-net:commons-net:3.0.1'
     }
 }

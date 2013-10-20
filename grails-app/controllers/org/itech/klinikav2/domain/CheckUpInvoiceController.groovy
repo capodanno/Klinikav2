@@ -15,10 +15,7 @@ class CheckUpInvoiceController {
     }
 	
 	//This will List the unpaid invoice Balances
-	def listBalances(){
-			params.max = Math.min(max ?: 10, 100)
-			[checkUpInvoiceInstanceList: CheckUpInvoice.where{hasBalance==true}, checkUpInvoiceInstanceList: CheckUpInvoice.count()]
-	}
+
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)

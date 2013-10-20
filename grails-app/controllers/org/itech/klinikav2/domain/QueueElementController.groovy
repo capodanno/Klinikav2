@@ -18,7 +18,7 @@ class QueueElementController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [queueElementInstanceList: QueueElement.list(params), queueElementInstanceTotal: QueueElement.count()]
     }
-	
+
 	//List Patient Visits
 	def listVisits(Integer max){
 		Date wantedDate

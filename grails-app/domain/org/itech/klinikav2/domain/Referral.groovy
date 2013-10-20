@@ -11,4 +11,5 @@ class Referral {
 	String doctorName
 	Date date
 	
+	static belongsTo = [patient:Patient]
 }

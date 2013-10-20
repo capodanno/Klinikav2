@@ -1,15 +1,23 @@
 package org.itech.klinikav2.controller
 
-import org.itech.klinikav2.domain.ItemNotifier;
+import org.itech.klinikav2.domain.Invoice
+import org.itech.klinikav2.domain.LaboratoryResult
+import org.itech.klinikav2.domain.MedicalHistory;
 import org.itech.klinikav2.domain.Patient;
+import org.itech.klinikav2.domain.Prescription
+import org.itech.klinikav2.domain.Referral
+import org.itech.klinikav2.domain.VitalSigns
 import org.springframework.dao.DataIntegrityViolationException
+import org.itech.klinikav2.domain.Diagnosis
 
+import utils.ItemNotifier;
 import utils.SMSNotifier
 
 class PatientController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
+	static scaffold = true
 	def index() {
 		//test of web API
 //		def sms = new SMSNotifier()
@@ -17,11 +25,63 @@ class PatientController {
 //		render result
 	}
 	public def addLog(Long id) {
-		def patientInstance = Patient.get(id)
+		def patientInstance = Patient.get(id)		
 		patientInstance.logActivity(params.activityType)
 		redirect(action: "show", id: patientInstance.id)
 	}
 
+	//the user adds the data of the patient
+	def addDiagnosis (Long id, Diagnosis d)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToDiagnoses(d)
+		patientInstance.save(flush:true, failOnError:true)		
+	}
+	
+	def addVitalSigns (Long id, VitalSigns v)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToVitalSigns(v)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	
+	def addPrescription (Long id, Prescription p)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToPrescriptions(v)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	
+	def addMedicalHistory (Long id, MedicalHistory medHis)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToMedicalHistories(medHis)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	
+	def addReferral (Long id, Referral r)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToReferrals(r)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	
+	def addLaboratoryResult (Long id, LaboratoryResult labRes)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToLaboratoryResults(labRes)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	
+	def addInvoice (Long id, Invoice invoice)
+	{
+		def patientInstance = Patient.get(id)
+		patientInstance.addToInvoices(invoice)
+		patientInstance.save(flush:true, failOnError:true)
+	}
+	//----------------------------------------------ends here
+	
+	
 	def list(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
 		[patientInstanceList: Patient.where{isDeleted==false}, patientInstanceTotal: Patient.count()]
@@ -36,7 +96,7 @@ class PatientController {
 
 	def create() {
 		[patientInstance: new Patient(params)]
-	}
+	}	
 
 	def save() {
 		def patientInstance = new Patient()
@@ -54,8 +114,8 @@ class PatientController {
 		patientInstance.address_province = params.address_province;
 		patientInstance.mobileNumber = params.mobileNumber;
 		patientInstance.telNumber = params.telNumber;
-		patientInstance.isActive = params.isActive;
-		patientInstance.isDeleted = params.isDeleted;
+		patientInstance.isActive = true
+		patientInstance.isDeleted=false
 		patientInstance.save()
 		if (!patientInstance.save(flush: true)) {
 			render(view: "create", model: [patientInstance: patientInstance])

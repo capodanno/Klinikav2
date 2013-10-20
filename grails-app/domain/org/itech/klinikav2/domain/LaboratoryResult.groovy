@@ -10,4 +10,6 @@ class LaboratoryResult {
 	Date date
 	String details
 
+	static scaffold= true
+	static belongsTo = [patient:Patient]
 }
