@@ -1,5 +1,6 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2.controller
 
+import org.itech.klinikav2.domain.Payment;
 import org.springframework.dao.DataIntegrityViolationException
 
 /**
@@ -14,29 +15,7 @@ class PaymentController {
         redirect(action: "list", params: params)
     }
 
-<<<<<<< HEAD
-
-	def listBalances(Integer max){
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceTotal: Payment.count()]
-		
-		}
-
-//	def listBalances(Integer max){
-//		params.max = Math.min(max ?: 10, 100)
-//		[paymentInstanceList: Payment.where{hasBalance==true}, checkUpInvoiceInstanceList: CheckUpInvoice.count()]
-//
-//}
-=======
-	def listBalances(){
-		params.max = Math.max(params.max ? params.int('max') : 10, 100)
-		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceList: Payment.count()]
-}
->>>>>>> 63374c6dea4bcbc3235b572bc68fdc1db1c7fa9b
-	
-	//This will List all the payments
-    
-	def list(Integer max) {
+    def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [paymentInstanceList: Payment.list(params), paymentInstanceTotal: Payment.count()]
     }

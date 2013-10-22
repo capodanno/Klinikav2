@@ -1,8 +1,11 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2
 
 
 
+import org.itech.klinikav2.domain.SecUserSecRoleController;
+import org.itech.klinikav2.domain.SecUserSecRole;
 import org.junit.*
+
 import grails.test.mixin.*
 
 /**

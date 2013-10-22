@@ -1,8 +1,11 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2
 
 
 
+import org.itech.klinikav2.domain.PrescriptionController;
+import org.itech.klinikav2.domain.Prescription;
 import org.junit.*
+
 import grails.test.mixin.*
 
 /**

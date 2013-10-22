@@ -1,8 +1,11 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2
 
 
 
+import org.itech.klinikav2.domain.QueueElementController;
+import org.itech.klinikav2.domain.QueueElement;
 import org.junit.*
+
 import grails.test.mixin.*
 
 /**

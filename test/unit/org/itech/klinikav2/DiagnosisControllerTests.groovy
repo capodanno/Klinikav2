@@ -1,8 +1,11 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2
 
 
 
+import org.itech.klinikav2.domain.DiagnosisController;
+import org.itech.klinikav2.domain.Diagnosis;
 import org.junit.*
+
 import grails.test.mixin.*
 
 /**

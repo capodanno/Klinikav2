@@ -1,8 +1,11 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2
 
 
 
+import org.itech.klinikav2.domain.EventController;
+import org.itech.klinikav2.domain.Event;
 import org.junit.*
+
 import grails.test.mixin.*
 
 /**

@@ -1,5 +1,6 @@
 package org.itech.klinikav2.domain
 
+import org.itech.klinikav2.domain.LaboratoryResult;
 import org.springframework.dao.DataIntegrityViolationException
 
 /**
