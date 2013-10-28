@@ -10,5 +10,6 @@ abstract class Appointment {
 	
 	Date date
 	boolean isAffirmed
-		
+	Doctor doctor
+			
 }

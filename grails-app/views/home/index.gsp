@@ -1,3 +1,5 @@
+
+<%@ page import="org.itech.klinikav2.domain.Clinic" %>
 <html>
 
 <head>
@@ -17,8 +19,8 @@
                 <div class="hero-unit">
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
-                      <h1>Clinic Name</h1>
-                      <p>Clinic Description</p>                 
+                      <h1>${fieldValue(bean: clinicInstance, field: "clinicName")}</h1>
+                      <p>${fieldValue(bean: clinicInstance, field: "clinicDescription")}</p>                 
                     </div>
                     <div class="span5">
                       <img src="${resource(dir: 'images', file: 'clinic.jpg')}" class="img-polaroid">
@@ -31,7 +33,7 @@
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
                       <h1>Vision</h1>
-                      <p>Statement of organization's aspirations: a formal statement that expresses the aspirations and goals of a company or organization</p>            
+                      <p>${fieldValue(bean: clinicInstance, field: "vision")}</p>            
                     </div>
                     <div class="span5">
                       <img src="${resource(dir: 'images', file: 'vision.jpg')}" class="img-polaroid">
@@ -44,7 +46,7 @@
                   <div class="row-fluid">
                     <div class="span7 marketting-info">
                       <h1>Mission</h1>
-                      <p>Formal business statement of aims: a formal document that states the objectives of a company or organization</p>                
+                      <p>${fieldValue(bean: clinicInstance, field: "mission")}</p>                
                     </div>
                     <div class="span5">
                       <img src="${resource(dir: 'images', file: 'mission.jpg')}" class="img-polaroid">
@@ -65,21 +67,18 @@
           <div class="span3">
             <a href="#"><img src="${resource(dir: 'images', file: 'smap.jpg')}" class="thumbnail bottom-space-less"></a>
             <h4>Location</h4> 
-			<p>Sambag, Jaro, Iloilo City</p> 			
+			<p>$${fieldValue(bean: clinicInstance, field: "address")}</p> 			
           </div>
           <div class="span3">
             <a href="#"><img src="${resource(dir: 'images', file: 'scontact.jpg')}" class="thumbnail bottom-space-less"></a>
             <h4>Contact Us</h4>  
-			<p>09090909090</p> 
-			<p>500-00-00</p> 
+			<p>${fieldValue(bean: clinicInstance, field: "mobileNum")}</p> 
+			<p>${fieldValue(bean: clinicInstance, field: "telNum")}</p> 
           </div> 
 		  <div class="span3">
             <a href="#"><img src="${resource(dir: 'images', file: 'clock.jpg')}" class="thumbnail bottom-space-less"></a>
             <h4>Clinic Hours</h4>  
-			<p>MWF ( 8:00 am - 4:00 pm )</p>
-			<p>TTh ( 10:00 am - 4:00 pm )</p>
-			<p>Saturday ( 8:00 am - 10:00 am )</p>
-			<p>Sunday ( No Office )</p> 
+			<p>${fieldValue(bean: clinicInstance, field: "clinicHours")}</p> 
           </div>
 		  <div class="span3">
             <a href="#"><img src="${resource(dir: 'images', file: 'doctor.jpg')}" class="thumbnail bottom-space-less"></a>

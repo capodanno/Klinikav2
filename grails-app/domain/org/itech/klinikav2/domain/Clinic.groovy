@@ -1,5 +1,7 @@
 package org.itech.klinikav2.domain
 
+import java.util.Date;
+
 import org.itech.klinikav2.enums.ActivityType;
 
 /**
@@ -21,21 +23,38 @@ class Clinic {
 	String twitterUrl
 	String email
 
-	PatientQueue queueToday
 	Date dateToday
-	DailyCounter counterToday
-	static hasMany = [profiles:Profile,patientQueues:PatientQueue]
-
-	Inventory inventory = Inventory.getInstance()
-	Revenue revenue = Revenue.getInstance()
-	
+	static hasMany = [profiles:Profile]
+		
 	//singleton class methods
 	private static final INSTANCE = new Clinic()
+	
 	static getInstance(){
 		return INSTANCE
 	}
+	
+//	private Clinic(String clinicName, String clinicHours, String address,
+//			String mobileNum, String telNum, String mission, String vision,
+//			String location, String facebookUrl, String twitterUrl,
+//			String email, Date dateToday,
+//			Inventory inventory, Revenue revenue){
+//			this.clinicName = clinicName;
+//			this.clinicHours = clinicHours;
+//			this.address = address;
+//			this.mobileNum = mobileNum;
+//			this.telNum = telNum;
+//			this.mission = mission;
+//			this.vision = vision;
+//			this.location = location;
+//			this.facebookUrl = facebookUrl;
+//			this.twitterUrl = twitterUrl;
+//			this.email = email;
+//			this.dateToday = dateToday;
+//			this.inventory = Inventory.getInstance();
+//			this.revenue = Revenue.getInstance();
+//	}
 	private Clinic(){
-
+		
 	}
 
 	static constraints = {

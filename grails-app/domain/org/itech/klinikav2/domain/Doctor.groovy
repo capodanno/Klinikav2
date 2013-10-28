@@ -11,11 +11,16 @@ class Doctor extends Profile{
 	String clinicHourEnd
 	String clinicHourStart
 	
-	static hasMany = [receptionists: Receptionist, schedEvents:Event]
+	static hasMany = [receptionists: Receptionist, schedEvents:Event,patientQueues:PatientQueue]
 	
 	//static scaffolding = true
     static constraints = {		
 	 
     }
+	
+	def addAQueue()
+	{
+		patientQueues.add(new PatientQueue())
+	}
 	
 }
