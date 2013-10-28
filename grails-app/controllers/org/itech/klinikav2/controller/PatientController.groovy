@@ -19,6 +19,7 @@ class PatientController {
 	
 	static scaffold = true
 	def index() {
+		redirect(action: "list")
 		//test of web API
 //		def sms = new SMSNotifier()
 //		def result= sms.sendClickatellSms("09277705918", "Hi!")
@@ -95,7 +96,7 @@ class PatientController {
 	}
 
 	def create() {
-		[patientInstance: new Patient(params)]
+		[patientInstance: new Patient(params), medicalHistoryInstance: new MedicalHistory(params),]
 	}	
 
 	def save() {

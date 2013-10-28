@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main">
+<meta name="layout" content="kickstart">
 <g:set var="entityName"
 	value="${message(code: 'patient.label', default: 'Patient')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
@@ -64,7 +64,7 @@
 						<dd>
 							<g:fieldValue bean="${patientInstance}" field="maritalStatus" />
 						</dd>
-						<dt>Marital Status</dt>
+						<dt>Mobile Number</dt>
 						<dd>
 							<g:fieldValue bean="${patientInstance}" field="mobileNumber" />
 						</dd>
@@ -112,7 +112,7 @@
 
 					</dl>
 
-					<g:if test="${patientInstance?.diagnoses}">
+					<%--<g:if test="${patientInstance?.diagnoses}">
 						<li class="fieldcontain"><span id="diagnoses-label"
 							class="property-label"><g:message
 									code="patient.diagnoses.label" default="Diagnoses" /></span> <g:each
@@ -123,7 +123,7 @@
 									</g:link></span>
 							</g:each></li>
 					</g:if>
-					<%--				<g:if test="${patientInstance?.laboratoryResults}">--%>
+					--%><%--				<g:if test="${patientInstance?.laboratoryResults}">--%>
 					<%--				<li class="fieldcontain">--%>
 					<%--					<span id="laboratoryResults-label" class="property-label"><g:message code="patient.laboratoryResults.label" default="Laboratory Results" /></span>--%>
 					<%--					--%>
@@ -155,13 +155,7 @@
 					<%--				</li>--%>
 					<%--				</g:if>--%>
 
-					<g:if test="${patientInstance?.mobileNumber}">
-						<li class="fieldcontain"><span id="mobileNumber-label"
-							class="property-label"><g:message
-									code="patient.mobileNumber.label" default="Mobile Number" /></span> <span
-							class="property-value" aria-labelledby="mobileNumber-label"><g:fieldValue
-									bean="${patientInstance}" field="mobileNumber" /></span></li>
-					</g:if>
+					<%--
 
 					<g:if test="${patientInstance?.prescriptions}">
 						<li class="fieldcontain"><span id="prescriptions-label"
@@ -177,7 +171,7 @@
 							</g:each></li>
 					</g:if>
 
-					<g:if test="${patientInstance?.referrals}">
+					--%><%--<g:if test="${patientInstance?.referrals}">
 						<li class="fieldcontain"><span id="referrals-label"
 							class="property-label"><g:message
 									code="patient.referrals.label" default="Referrals" /></span> <g:each
@@ -189,7 +183,7 @@
 							</g:each></li>
 					</g:if>
 
-					<g:if test="${patientInstance?.telNumber}">
+					--%><g:if test="${patientInstance?.telNumber}">
 						<li class="fieldcontain"><span id="telNumber-label"
 							class="property-label"><g:message
 									code="patient.telNumber.label" default="Tel Number" /></span> <span
@@ -197,7 +191,7 @@
 									bean="${patientInstance}" field="telNumber" /></span></li>
 					</g:if>
 
-					<g:if test="${patientInstance?.vitalSigns}">
+					<%--<g:if test="${patientInstance?.vitalSigns}">
 						<li class="fieldcontain"><span id="vitalSigns-label"
 							class="property-label"><g:message
 									code="patient.vitalSigns.label" default="Vital Signs" /></span> <g:each
@@ -209,27 +203,30 @@
 							</g:each></li>
 					</g:if>
 
-					<g:link controller="vitalSigns" action="create"
-						id="${patientInstance?.id}">Add Vital Signs</g:link>
+					--%><g:link controller="vitalSigns" action="create"
+						id="${patientInstance?.id}">Add Vital Signs</g:link><br>
 					<g:link controller="referral" action="create"
-						id="${patientInstance?.id}">Add Referrals</g:link>
+						id="${patientInstance?.id}">Add Referrals</g:link><br>
 					<g:link controller="prescription" action="create"
-						id="${patientInstance?.id}">Add Prescription</g:link>
+						id="${patientInstance?.id}">Add Prescription</g:link><br>
 					<g:link controller="payment" action="create"
-						id="${patientInstance?.id}">Add Payment</g:link>
+						id="${patientInstance?.id}">Add Payment</g:link><br>
 					<g:link controller="medicalHistory" action="create"
-						id="${patientInstance?.id}">Add MedicalHistory</g:link>
+						id="${patientInstance?.id}">Add MedicalHistory</g:link><br>
 					<g:link controller="laboratoryResult" action="create"
-						id="${patientInstance?.id}">Add Laboratory Results</g:link>			
+						id="${patientInstance?.id}">Add Laboratory Results</g:link><br>			
 					<g:link controller="diagnosis" action="create"
-						id="${patientInstance?.id}">Add Diagnosis</g:link>
+						id="${patientInstance?.id}">Add Diagnosis</g:link><br>
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${patientInstance?.id}" />
-							<g:link class="edit" action="edit" id="${patientInstance?.id}">
+								<g:actionSubmit class="edit" action="edit"
+								value="${message(code: 'default.button.edit.label', default: 'Edit')}"
+								 />
+							<%--<g:link class="edit" action="edit" id="${patientInstance?.id}">
 								<g:message code="default.button.edit.label" default="Edit" />
 							</g:link>
-							<g:actionSubmit class="delete" action="delete"
+							--%><g:actionSubmit class="delete" action="delete"
 								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
 								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						</fieldset>

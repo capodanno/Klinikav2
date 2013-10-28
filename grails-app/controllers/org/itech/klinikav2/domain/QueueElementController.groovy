@@ -31,7 +31,7 @@ class QueueElementController {
         }
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'queueElement.label', default: 'QueueElement'), queueElementInstance.id])
-        redirect(action: "show", id: queueElementInstance.id)
+        redirect(action: "list", params:params)
     }
 
     def show() {

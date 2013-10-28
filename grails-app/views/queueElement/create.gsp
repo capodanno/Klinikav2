@@ -10,7 +10,20 @@
 </head>
 
 <body>
-
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<div class="content">
+		<div class="container">
+			<div class="page-header">
+				<h1>
+					Queue Element<small></small>
+				</h1>
+			</div>
 <section id="create-queueElement" class="first">
 
 	<g:hasErrors bean="${queueElementInstance}">
@@ -30,7 +43,8 @@
 	</g:form>
 	
 </section>
-		
+		</div>
+		</div>
 </body>
 
 </html>

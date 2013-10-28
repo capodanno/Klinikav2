@@ -15,6 +15,7 @@
 	<div class="content">
 		<div class="container">
 			<div class="page-header">
+			<h1>Administrator <small>Create</small></h1></div>
 				<section id="create-admin" class="first">
 
 					<g:hasErrors bean="${adminInstance}">
@@ -39,7 +40,6 @@
 				</section>
 			</div>
 		</div>
-	</div>
 </body>
 
 </html>

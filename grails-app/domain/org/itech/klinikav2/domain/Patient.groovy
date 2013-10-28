@@ -82,6 +82,7 @@ class Patient {
 		def middleInitial = middleName.substring(0,1).toUpperCase()
 		return "${lastName}, ${firstName} ${middleInitial}."		
 	};
+
 	public Patient(String firstName, String middleName, String lastName,
 			Date birthDate, Gender gender, MaritalStatus maritalStatus,
 			Date dateOfRegistration, String emailAddress, String address_city,
