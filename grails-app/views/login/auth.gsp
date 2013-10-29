@@ -33,7 +33,7 @@
 				<div id="remember_me_holder" class="control-group fieldcontain">
 					<label for='remember_me' class="control-label"><g:message code="springSecurity.login.remember.me.label"/></label>
 					<div class="controls">
-						<bs:checkBox class="span4" name="${rememberMeParameter}" value="${hasCookie}" />
+						<g:checkBox class="span4" name="${rememberMeParameter}" value="${hasCookie}" />
 					</div>
 				</div>
 			</fieldset>

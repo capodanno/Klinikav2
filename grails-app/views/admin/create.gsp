@@ -14,7 +14,9 @@
 <body>
 	<div class="content">
 		<div class="container">
-			<div class="page-header">
+			<div class="page-header topSlider">
+			<h1>Create</h1>
+			</div>
 				<section id="create-admin" class="first">
 
 					<g:hasErrors bean="${adminInstance}">
@@ -37,7 +39,6 @@
 					</g:form>
 
 				</section>
-			</div>
 		</div>
 	</div>
 </body>

@@ -14,7 +14,9 @@
 <%--            for All Users--%>
 <%--            <g:render template="/_menu/signIn"/>--%>
 <%--				for Normal Users--%>
-            	<g:render template="/_menu/normalUser"/>
+<%--            	<g:render template="/_menu/normalUser"/>--%>
+<%--            	for Admin--%>
+				<g:render template="/_menu/administrator"/>
             </div>
           </div>
         </div>
