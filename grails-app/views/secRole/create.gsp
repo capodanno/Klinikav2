@@ -10,6 +10,11 @@
 </head>
 
 <body>
+<div class="content">
+<div class="container">
+<div class="page-header topSlider">
+<h1>Create Role</h1>
+</div>
 
 <section id="create-secRole" class="first">
 
@@ -23,14 +28,15 @@
 		<fieldset class="form">
 			<g:render template="form"/>
 		</fieldset>
-		<div class="form-actions">
+		<div>
 			<g:submitButton name="create" class="btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
             <button class="btn" type="reset"><g:message code="default.button.reset.label" default="Reset" /></button>
 		</div>
 	</g:form>
 	
 </section>
-		
+		</div>
+		</div>
 </body>
 
 </html>

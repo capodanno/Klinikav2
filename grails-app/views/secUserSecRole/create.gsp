@@ -10,7 +10,11 @@
 </head>
 
 <body>
-
+<div class="content">
+<div class="container">
+<div class="page-header topSlider">
+<h1>User Role</h1>
+</div>
 <section id="create-secUserSecRole" class="first">
 
 	<g:hasErrors bean="${secUserSecRoleInstance}">
@@ -30,7 +34,8 @@
 	</g:form>
 	
 </section>
-		
+		</div>
+		</div>
 </body>
 
 </html>

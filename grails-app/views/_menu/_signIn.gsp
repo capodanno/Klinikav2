@@ -1,5 +1,5 @@
 <ul class="nav top">
-	<li><a href="#">Set Appointment</a></li>
+	<li><a href="#"><i class="icon-calendar"></i> Set Appointment</a></li>
 </ul>
 <ul class="nav pull-right">
     <form class="form-inline top">
