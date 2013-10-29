@@ -1,5 +1,7 @@
 package org.itech.klinikav2.controller
 
+import java.util.Date;
+
 import org.itech.klinikav2.domain.Invoice
 import org.itech.klinikav2.domain.LaboratoryResult
 import org.itech.klinikav2.domain.MedicalHistory;
@@ -9,11 +11,17 @@ import org.itech.klinikav2.domain.Referral
 import org.itech.klinikav2.domain.VitalSigns
 import org.springframework.dao.DataIntegrityViolationException
 import org.itech.klinikav2.domain.Diagnosis
+import org.itech.klinikav2.enums.Gender;
+import org.itech.klinikav2.enums.MaritalStatus;
 
 import utils.ItemNotifier;
 import utils.SMSNotifier
 
 class PatientController {
+	
+	
+	def exportService // Export service provided by Export plugin
+	def grailsApplication  //inject GrailsApplication
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -87,6 +95,33 @@ class PatientController {
 		[patientInstanceList: Patient.where{isDeleted==false}, patientInstanceTotal: Patient.count()]
 		//		[patientInstanceList: Patient.list(), patientInstanceTotal: Patient.count()]
 	}
+	
+	def listPatientAndDetails(Integer max){
+		params.max = Math.max(max ?: Patient.count(), 1)
+		if(!params.max) params.max = 10
+
+		if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=payments.${params.extension}")
+			
+			List fields = [	"firstName", "middleName", "lastName", "birthDate", "gender", "maritalStatus", "dateOfRegistration", "emailAddress"
+,"address_city", "address_street", "address_town", "address_province", "mobileNumber", "telNumber", "isActive", "isDeleted"]
+			Map labels = ["firstName":"First Name", "middleName": "Middle Name", "lastName": "Last Name", "birthDate": "Birth Date", "gender":"Gender","maritalStatus": "Marital Status",
+				"dateOfRegistration":"Date of Registration", "emailAddress": "Email Address", "address_city" : "City", "address_street" : "Street" , "address_town": "Town", "address_province":"Province","mobileNumber":"Mobile Number", "telNumber":"Telephone Number","isActive":"Is Active", "isDeleted":"Is Deleted"]
+			
+			def upperCase = { domain, value ->
+				return value.toUpperCase()
+			}
+			
+			Map formatters = [name: upperCase]
+			Map parameters = [title: "Balances Report", "column.widths": [0.2, 0.3]]
+			
+			exportService.export(params.format, response.outputStream,Payment.list(params), fields, labels, formatters, parameters)
+		}
+		[patientInstanceList: Patient.where{isDeleted==false}, patientInstanceTotal: Patient.count()]
+		//		[patientInstanceList: Patient.list(), patientInstanceTotal: Patient.count()]
+	}
+	
 
 	//to show the deleted patients
 	def listDeleted(Integer max){

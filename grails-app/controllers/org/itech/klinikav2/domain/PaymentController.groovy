@@ -7,6 +7,9 @@ import org.springframework.dao.DataIntegrityViolationException
  * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
  */
 class PaymentController {
+	
+	def exportService // Export service provided by Export plugin
+	def grailsApplication  //inject GrailsApplication
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -14,32 +17,56 @@ class PaymentController {
         redirect(action: "list", params: params)
     }
 
-<<<<<<< HEAD
 
 	def listBalances(Integer max){
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceTotal: Payment.count()]
-		
+		params.max = Math.max(max ?: Payment.count(), 1)
+		if(!params.max) params.max = 10
+
+		if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=payments.${params.extension}")
+			
+			List fields = ["patient", "amountPaid"]
+			Map labels = ["patient":"Patient", "amountPaid":"Amount Paid"]
+			
+			def upperCase = { domain, value ->
+				return value.toUpperCase()
+			}
+			
+			Map formatters = [name: upperCase]
+			Map parameters = [title: "Balances Report", "column.widths": [0.2, 0.3]]
+			
+			exportService.export(params.format, response.outputStream,Payment.list(params), fields, labels, formatters, parameters)
 		}
 
-//	def listBalances(Integer max){
-//		params.max = Math.min(max ?: 10, 100)
-//		[paymentInstanceList: Payment.where{hasBalance==true}, checkUpInvoiceInstanceList: CheckUpInvoice.count()]
-//
-//}
-=======
-	def listBalances(){
-		params.max = Math.max(params.max ? params.int('max') : 10, 100)
-		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceList: Payment.count()]
-}
->>>>>>> 63374c6dea4bcbc3235b572bc68fdc1db1c7fa9b
-	
-	//This will List all the payments
+		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceTotal: Payment.count()]}
     
 	def list(Integer max) {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [paymentInstanceList: Payment.list(params), paymentInstanceTotal: Payment.count()]
     }
+	
+	def listPaymentMade(Integer max) {
+		params.max = Math.max(max ?: Payment.count(), 1)
+		if(!params.max) params.max = 10
+
+		if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=payments.${params.extension}")
+			
+			List fields = ["patient", "amountPaid", "date"]
+			Map labels = ["patient":"Patient", "amountPaid":"Amount Paid","date":"Date"]
+			
+			def upperCase = { domain, value ->
+				return value.toUpperCase()
+			}
+			
+			Map formatters = [name: upperCase]
+			Map parameters = [title: "Payments Made Report", "column.widths": [0.2, 0.3, 0.2]]
+			exportService.export(params.format, response.outputStream,Payment.list(params), fields, labels, formatters, parameters)
+		}
+		[paymentInstanceList: Payment.list(params), paymentInstanceTotal: Payment.count()]
+	}
 
     def create() {
         [paymentInstance: new Payment(params)]

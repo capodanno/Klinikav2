@@ -123,6 +123,8 @@ log4j = {
 			'org.hibernate',
 			'net.sf.ehcache.hibernate'
 }
+//javascript library
+grails.views.javascript.library="jquery"
 
 grails.config.defaults.locations = [KickstartResources]
 //smsGateway properties

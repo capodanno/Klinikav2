@@ -11,10 +11,10 @@ class Payment {
 	Double amountPaid
 	Double balance
 	Date date
-	boolean hasBalance
+	boolean hasBalance = true
 	
 	
 	static hasOne  = [patient:Patient]
 	static hasMany = [invoices:Invoice]
-	//Invoice invoice, since wala pa mahimo ang class
+
 }

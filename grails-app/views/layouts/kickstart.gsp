@@ -3,6 +3,17 @@
 <html lang="${session.'org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE'}">
 
 <head>
+
+<link rel='stylesheet' href="${resource(dir: 'css', file: 'jquery.dataTables.css')}" type="text/css"/> 
+ 
+<g:javascript>
+   $(document).ready(function() {
+      $("#dataTablesList").dataTable();
+   });
+</g:javascript>
+
+
+
 	<title><g:layoutTitle default="${meta(name:'app.name')}" /></title>
 	
     <meta charset="utf-8">
@@ -50,6 +61,7 @@
 <%--	<r:require modules="bootstrap"/>--%>
 <%--	<r:require modules="bootstrap_utils"/>--%>
 
+
 	<r:layoutResources />
 	<g:layoutHead />
 
@@ -62,6 +74,10 @@
 </head>
 
 <body>
+
+<g:javascript library="datatables" src="jquery.dataTables.js"/>
+
+
 <%--	<g:render template="/_menu/navbar"/>														--%>
 
 	<!-- Enable to overwrite Header by individual page -->

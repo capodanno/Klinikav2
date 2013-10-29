@@ -26,21 +26,52 @@ class ItemController {
     }
 	
 	//This will list the Items with Low Stock Level
-	def listItemsWithMinimumStockLevel={
+	def listItemsWithMinimumStockLevel(Integer max){
+		params.max = Math.max(max ?: Item.count(), 1)
 		if(!params.max) params.max = 10
-			if(params?.format && params.format != "html"){
-			response.contentType = grailsApplication.config.grails.mime.types[params.format]
-			response.setHeader("Content-disposition", "attachment; filename=item.${params.extension}")
 
-			exportService.export(params.format, response.outputStream, Item.list(params), fields, lables, formatters, parameters)
+		if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=payments.${params.extension}")
 			
+			List fields = ["name", "description", "currentQuantity", "itemType"]
+			Map labels = ["name":"Item Name", "description":"Description","currentQuantity":"Current Quantity","itemType":"Item Type"]
 			
+			def upperCase = { domain, value ->
+				return value.toUpperCase()
+			}
 			
-			
+			Map formatters = [name: upperCase]
+			Map parameters = [title: "Low Stocks Report", "column.widths": [0.2, 0.3, 0.2, 0.3]]
+			exportService.export(params.format, response.outputStream,Item.list(params), fields, labels, formatters, parameters)
 		}
 		[itemInstanceList: Item.where {currentQuantity <= minStockLevel}, itemInstanceTotal: Item.count()]
 		
 	}
+	def listItemsAndDetails(Integer max){
+		params.max = Math.max(max ?: Item.count(), 1)
+		if(!params.max) params.max = 10
+
+		if(params?.format && params.format != "html"){
+			response.contentType = grailsApplication.config.grails.mime.types[params.format]
+			response.setHeader("Content-disposition", "attachment; filename=payments.${params.extension}")
+			
+			List fields = ["name", "description", "retailPrice", "currentQuantity", "itemType", "expiryDate"]
+			Map labels = ["name":"Item Name", "description":"Description", "retailPrice":"Retail Price" ,"currentQuantity":"Current Quantity","itemType":"Item Type", "expiryDate":"Expiry Date"]
+			
+			def upperCase = { domain, value ->
+				return value.toUpperCase()
+			}
+			
+			Map formatters = [name: upperCase]
+			Map parameters = [title: "Items Report", "column.widths": [0.3, 0.2, 0.2, 0.2, 0.2, 0.2]]
+			
+			exportService.export(params.format, response.outputStream,Item.list(params), fields, labels, formatters, parameters)
+		}
+		[itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
+		
+	}
+	
 
     def create() {
         [itemInstance: new Item(params)]

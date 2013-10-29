@@ -3,30 +3,33 @@
 <!doctype html>
 <html>
 <head>
+<r:require module="export"/>
+	<export:resource />
+	<g:javascript library="jquery"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="layout" content="kickstart" />
+	<meta name="layout" content="main" />
 	<g:set var="entityName" value="${message(code: 'payment.label', default: 'Payment')}" />
 	<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 
-<body>
-	
-<section id="list-payment" class="first">
+<a href="#list-payment" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-	<table class="table table-bordered">
-		<thead>
-			<tr>
+		<div id="list-payment" class="content scaffold-list" role="main">
+			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<table id="dataTablesList">
+				<thead>
+					<tr>
 			
-
 				<g:sortableColumn property="patient" title="${message(code: 'payment.patient.label', default: 'Patient')}" />
-				
+			
 				<g:sortableColumn property="amountPaid" title="${message(code: 'payment.amountPaid.label', default: 'Amount Paid')}" />
 			
 				<g:sortableColumn property="date" title="${message(code: 'payment.date.label', default: 'Date')}" />
 			
-				<g:sortableColumn property="hasBalance" title="${message(code: 'payment.hasBalance.label', default: 'Has Balance')}" />
-		
-						
+					
 			</tr>
 		</thead>
 		<tbody>
@@ -39,9 +42,8 @@
 			
 				<td><g:formatDate date="${paymentInstance.date}" /></td>
 			
-				<td><g:formatBoolean boolean="${paymentInstance.hasBalance}" /></td>
+				
 			
-							
 			</tr>
 		</g:each>
 		</tbody>
@@ -50,7 +52,11 @@
 	<div class="pagination">
 		<bs:paginate total="${paymentInstanceTotal}" />
 	</div>
-</section>
+	<div class="paginateButtons">
+   				 <g:paginate total="${Payment.count()}" />
+   				 <export:formats formats="['csv', 'excel', 'ods', 'pdf', 'xml']" />
+			</div>
+	</div>
 
 </body>
 
