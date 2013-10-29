@@ -13,6 +13,7 @@
 			
 				<g:sortableColumn property="timeAdmitted" title="${message(code: 'queueElement.timeAdmitted.label', default: 'Time Admitted')}" />
 			
+					<th>Remarks</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,10 +26,14 @@
 			
 				<td><g:formatDate date="${queueElementInstance.date}" /></td>
 			
-				<td>${fieldValue(bean: queueElementInstance, field: "patient")}</td>
+				<td><g:link action="showPatient"
+						id="${queueElementInstance.id}">${fieldValue(bean: queueElementInstance, field: "patient")}</g:link></td>
 			
 				<td>${fieldValue(bean: queueElementInstance, field: "timeAdmitted")}</td>
 			
+				<td><g:link action="show" id="${queueElementInstance.id}">View</g:link> |
+					<g:link class="edit" action="edit" id="${queueElementInstance?.id}">Edit</g:link> 
+					<%--<g:link class="delete" action="delete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"> Delete</g:link>--%></td>
 			</tr>
 		</g:each>
 		</tbody>

@@ -1,5 +1,5 @@
 <ul class="nav pull-right top">
-					<li><a href="#"><i class="icon-home"></i> Home</a></li>
+					<li><a href="${createLink(uri: '/home')}"><i class="icon-home"></i> Home</a></li>
 					<li><a href="#"><i class="icon-list-alt"></i> Inventory</a></li>
 					<li><a href="#"><i class="icon-envelope"></i> Notification</a></li>
 					<li class="dropdown">
