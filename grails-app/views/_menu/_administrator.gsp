@@ -11,6 +11,7 @@
 						</ul>
 					</li>
 					<li><a href="#"><i class="icon-book"></i> Reports</a></li>
+					<li><a href="#"><i class="icon-user"></i> System User</a></li>
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i></a>
 							<ul class="dropdown-menu">

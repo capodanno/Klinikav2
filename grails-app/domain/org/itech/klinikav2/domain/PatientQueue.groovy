@@ -10,7 +10,7 @@ class PatientQueue {
 	Date dateToday
 	Date date
 	
-	static hasOne = Clinic
+	static hasOne = Doctor
 	static hasMany = [queueElements:QueueElement, dailyCounters:DailyCounter]
 	
 }

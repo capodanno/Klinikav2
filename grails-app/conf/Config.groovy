@@ -98,7 +98,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/event/**':              		  ['permitAll'],
 	'/home/index/**':              	  ['permitAll'],
 	'/clinic/**':              	  ['permitAll'],
-	'/patient/**':              	  ['permitAll'],
+	'/patient/**':              	  ['ROLE_ADMIN'],
 	'/vitalSigns/**':              	  ['permitAll'],
 	'/**': 								['permitAll'],
 ]

@@ -25,8 +25,10 @@ class PatientController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	static scaffold = true
+	
 	def index() {
+		redirect(action: "list", params: params)
+		
 		//test of web API
 //		def sms = new SMSNotifier()
 //		def result= sms.sendClickatellSms("09277705918", "Hi!")
@@ -92,8 +94,8 @@ class PatientController {
 	
 	def list(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
-		[patientInstanceList: Patient.where{isDeleted==false}, patientInstanceTotal: Patient.count()]
-		//		[patientInstanceList: Patient.list(), patientInstanceTotal: Patient.count()]
+		//[patientInstanceList: Patient.where{isDeleted==false}, patientInstanceTotal: Patient.count()]
+				[patientInstanceList: Patient.list(), patientInstanceTotal: Patient.count()]
 	}
 	
 	def listPatientAndDetails(Integer max){

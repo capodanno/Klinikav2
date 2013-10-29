@@ -1,6 +1,5 @@
-package org.itech.klinikav2.controller
+package org.itech.klinikav2.domain
 
-import org.itech.klinikav2.domain.Clinic;
 import org.springframework.dao.DataIntegrityViolationException
 
 /**
@@ -21,7 +20,7 @@ class ClinicController {
     }
 
     def create() {
-        [clinicInstance: Clinic.getInstance()]
+        [clinicInstance: new Clinic(params)]
     }
 
     def save() {

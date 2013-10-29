@@ -19,13 +19,6 @@ class QueueElementController {
         [queueElementInstanceList: QueueElement.list(params), queueElementInstanceTotal: QueueElement.count()]
     }
 
-	//List Patient Visits
-	def listVisits(Integer max){
-		Date wantedDate
-		params.max = Math.min(max ?: 10, 100)
-		[queueElementInstanceList: QueueElement.where {date == wantedDate}, queueElementInstanceTotal: QueueElement.count()]
-	}
-
     def create() {
         [queueElementInstance: new QueueElement(params)]
     }
@@ -111,4 +104,5 @@ class QueueElementController {
             redirect(action: "show", id: params.id)
         }
     }
+	
 }

@@ -4,17 +4,26 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<<<<<<< HEAD
 	<meta name="layout" content="kickstart" />
-=======
-	<meta name="layout" content="main" />
->>>>>>> bb48a62eb7e8b0b707970056c93b29e950a1b324
 	<g:set var="entityName" value="${message(code: 'queueElement.label', default: 'QueueElement')}" />
 	<title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 
 <body>
-
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<div class="content">
+		<div class="container">
+			<div class="page-header">
+				<h1>
+					Queue Element<small></small>
+				</h1>
+			</div>
 <section id="create-queueElement" class="first">
 
 	<g:hasErrors bean="${queueElementInstance}">
@@ -34,7 +43,8 @@
 	</g:form>
 	
 </section>
-		
+		</div>
+		</div>
 </body>
 
 </html>

@@ -13,7 +13,9 @@
 <body>
 	<div class="content">
 		<div class="container">
-			<div class="page-header">
+			<div class="page-header topSlider">
+			<h1>Admin</h1>
+			</div>
 				<section id="list-admin" class="first">
 
 					<table class="table table-bordered">
@@ -72,7 +74,6 @@
 						<bs:paginate total="${adminInstanceTotal}" />
 					</div>
 				</section>
-			</div>
 		</div>
 	</div>
 </body>

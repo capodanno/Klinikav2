@@ -58,7 +58,7 @@ class Patient {
 	}
 	
 	static hasMany = [vitalSigns:VitalSigns, diagnoses:Diagnosis, prescriptions:Prescription, medicalHistories:MedicalHistory, referrals:Referral,
-		laboratoryResults:LaboratoryResult, payments:Payment, ]
+		laboratoryResults:LaboratoryResult, payments:Payment]
 	
 	static mapping ={
 		vitalSigns cascade: "all-delete-orphan"

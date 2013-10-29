@@ -1,5 +1,6 @@
-package org.itech.klinikav2.domain
+package org.itech.klinikav2.controller
 
+import org.itech.klinikav2.domain.Payment;
 import org.springframework.dao.DataIntegrityViolationException
 
 /**
@@ -17,6 +18,7 @@ class PaymentController {
         redirect(action: "list", params: params)
     }
 
+<<<<<<< HEAD:grails-app/controllers/org/itech/klinikav2/domain/PaymentController.groovy
 
 	def listBalances(Integer max){
 		params.max = Math.max(max ?: Payment.count(), 1)
@@ -42,6 +44,9 @@ class PaymentController {
 		[paymentInstanceList: Payment.where{hasBalance==true}, paymentInstanceTotal: Payment.count()]}
     
 	def list(Integer max) {
+=======
+    def list() {
+>>>>>>> 8572a5b74eda969265c178785236de1409a1d04c:grails-app/controllers/org/itech/klinikav2/controller/PaymentController.groovy
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [paymentInstanceList: Payment.list(params), paymentInstanceTotal: Payment.count()]
     }

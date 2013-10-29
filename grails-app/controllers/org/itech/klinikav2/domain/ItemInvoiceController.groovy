@@ -1,5 +1,6 @@
 package org.itech.klinikav2.domain
 
+import org.itech.klinikav2.domain.ItemInvoice;
 import org.springframework.dao.DataIntegrityViolationException
 
 /**
