@@ -45,6 +45,17 @@ class QueueElementController {
         [queueElementInstance: queueElementInstance]
     }
 
+	def showPatient(){
+		def queueElementInstance = QueueElement.get(params.id)
+		def patientInstance = queueElementInstance.patient
+		if (!patientInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'queueElement.label', default: 'QueueElement'), params.id])
+			redirect(action: "list")
+			return
+		}
+
+		[patientInstance: patientInstance]
+	}
     def edit() {
         def queueElementInstance = QueueElement.get(params.id)
         if (!queueElementInstance) {

@@ -1,4 +1,4 @@
-<%@ page import="org.itech.klinikav2.domain.Patient"%>
+<%@ page import="org.itech.klinikav2.domain.QueueElement"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 		<div class="container">
 			<div class="page-header">
 				<h1>
-					View <small>Patient</small>
+					View<small>Patient</small>
 				</h1>
 			</div>
 
@@ -24,6 +24,12 @@
 							class="btn btn-success btn-mini">
 							<h5>
 								<span class="cus-user_add"></span> Add Patient
+							</h5>
+						</a>
+						<a href="${createLink(uri: '/queueElement/list')}"
+							class="btn btn-success btn-mini">
+							<h5>
+								<span class="cus-application_view_list"></span> Back to Queue
 							</h5>
 						</a> <a href="${createLink(uri: '/patient/list')}"
 							class="btn btn-primary btn-mini">
@@ -101,7 +107,7 @@
 						<dd>
 							<g:fieldValue bean="${patientInstance}" field="address_street" />
 						</dd>
-						<%--<dt>Active</dt>
+						<dt>Active</dt>
 						<dd>
 							<g:fieldValue bean="${patientInstance}" field="isActive" />
 						</dd>
@@ -110,7 +116,7 @@
 							<g:fieldValue bean="${patientInstance}" field="isDeleted" />
 						</dd>
 
-					--%></dl>
+					</dl>
 
 					<%--<g:if test="${patientInstance?.diagnoses}">
 						<li class="fieldcontain"><span id="diagnoses-label"
@@ -183,8 +189,7 @@
 							</g:each></li>
 					</g:if>
 
-					--%>
-					<%--<g:if test="${patientInstance?.telNumber}">
+					--%><g:if test="${patientInstance?.telNumber}">
 						<li class="fieldcontain"><span id="telNumber-label"
 							class="property-label"><g:message
 									code="patient.telNumber.label" default="Tel Number" /></span> <span
@@ -192,7 +197,7 @@
 									bean="${patientInstance}" field="telNumber" /></span></li>
 					</g:if>
 
-					--%><%--<g:if test="${patientInstance?.vitalSigns}">
+					<%--<g:if test="${patientInstance?.vitalSigns}">
 						<li class="fieldcontain"><span id="vitalSigns-label"
 							class="property-label"><g:message
 									code="patient.vitalSigns.label" default="Vital Signs" /></span> <g:each
